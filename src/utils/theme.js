@@ -19,5 +19,6 @@ export default {
     black: {
       normal: "#000000",
     },
+    background: "#f1f5f9",
   },
 };

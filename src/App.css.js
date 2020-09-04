@@ -45,6 +45,10 @@ export const AppMenu = styled.div`
     max-width: 200px;
   }
 `;
+export const Wrapper = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`;
 export const Main = styled.div`
   display: flex;
   flex-direction: column;

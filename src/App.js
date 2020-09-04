@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import GlobalStyles from "./index.css";
 import { Navigation, Hamburger, Profile } from "components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container, MobileMenu, AppMenu, Main } from "App.css";
+import { Container, MobileMenu, AppMenu, Wrapper, Main } from "App.css";
 import { FaHome, FaHistory, FaRegCreditCard } from "react-icons/fa";
 import { MdLinearScale, MdAssessment, MdSecurity } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -10,6 +10,7 @@ import { IoMdSettings } from "react-icons/io";
 import { BiHelpCircle } from "react-icons/bi";
 import theme from "utils/theme";
 import { ThemeProvider } from "styled-components";
+import { Home } from "pages";
 function App() {
   const [isActiveHamburger, setIsActiveHamburger] = useState(false);
   const handleHamburgerIsActive = (e) => {
@@ -80,9 +81,13 @@ function App() {
           </AppMenu>
           <Main>
             <Profile />
-            <Switch>
-              <Route path="/" exact></Route>
-            </Switch>
+            <Wrapper>
+              <Switch>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+              </Switch>
+            </Wrapper>
           </Main>
         </Container>
       </Router>
