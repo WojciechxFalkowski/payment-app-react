@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import GlobalStyles from "./index.css";
-import { Navigation, Hamburger } from "components";
+import { Navigation, Hamburger, Profile } from "components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container, MobileMenu, AppMenu, Main } from "App.css";
 import { FaHome, FaHistory, FaRegCreditCard } from "react-icons/fa";
@@ -8,6 +8,8 @@ import { MdLinearScale, MdAssessment, MdSecurity } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { IoMdSettings } from "react-icons/io";
 import { BiHelpCircle } from "react-icons/bi";
+import theme from "utils/theme";
+import { ThemeProvider } from "styled-components";
 function App() {
   const [isActiveHamburger, setIsActiveHamburger] = useState(false);
   const handleHamburgerIsActive = (e) => {
@@ -64,6 +66,7 @@ function App() {
   return (
     <Fragment>
       <GlobalStyles />
+
       <Router>
         <Container>
           <MobileMenu>
@@ -76,6 +79,7 @@ function App() {
             <Navigation items={menu}></Navigation>
           </AppMenu>
           <Main>
+            <Profile />
             <Switch>
               <Route path="/" exact></Route>
             </Switch>
@@ -86,4 +90,12 @@ function App() {
   );
 }
 
-export default App;
+function RootApp() {
+  return (
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  );
+}
+
+export default RootApp;

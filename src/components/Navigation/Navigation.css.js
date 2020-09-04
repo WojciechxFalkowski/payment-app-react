@@ -13,6 +13,12 @@ export const Menu = styled.ul`
     margin-block-start: unset;
     margin-block-end: unset;
   }
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    text-decoration: none;
+  }
 `;
 
 export const Li = styled.li`
@@ -39,12 +45,6 @@ export const Li = styled.li`
   }
   @media (min-width: 1024px) {
     padding: 1vh 0vw 1vh 40px;
-  } /* A link that has not been visited */
-  a:link,
-  a:visited,
-  a:hover,
-  a:active {
-    text-decoration: none;
   }
 `;
 export const I = styled.i`

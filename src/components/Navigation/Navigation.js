@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, Li, I, P } from "./Navigation.css";
-import logo from "./../../icons/navigation/logo2.png";
+import logo from "./../../images/navigation/logo2.png";
 
 const Navigation = ({ items }) => {
   return (
@@ -15,7 +15,7 @@ const Navigation = ({ items }) => {
                 <I>{item.icon}</I>
                 {item.name}
               </P>
-            </Li>{" "}
+            </Li>
           </NavLink>
         ))}
       </Menu>

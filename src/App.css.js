@@ -52,4 +52,11 @@ export const Main = styled.div`
   align-items: center;
   width: 100%;
   margin: 0 auto;
+  @media (min-width: 768px) {
+    justify-content: unset;
+  }
+  @media (min-width: 1024px) {
+    width: 100%;
+    max-width: 1700px;
+  }
 `;
