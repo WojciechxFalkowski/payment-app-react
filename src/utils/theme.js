@@ -21,4 +21,7 @@ export default {
     },
     background: "#f1f5f9",
   },
+  cards: {
+    width: 300,
+  },
 };
