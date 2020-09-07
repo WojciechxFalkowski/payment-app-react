@@ -78,7 +78,10 @@ function App() {
             />
           </MobileMenu>
           <AppMenu isActiveHamburger={isActiveHamburger}>
-            <Navigation items={menu}></Navigation>
+            <Navigation
+              onClick={handleHamburgerIsActive}
+              items={menu}
+            ></Navigation>
           </AppMenu>
           <Main>
             <Profile />
