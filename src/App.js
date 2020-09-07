@@ -10,7 +10,8 @@ import { IoMdSettings } from "react-icons/io";
 import { BiHelpCircle } from "react-icons/bi";
 import theme from "utils/theme";
 import { ThemeProvider } from "styled-components";
-import { Home } from "pages";
+import { Home, History } from "pages";
+
 function App() {
   const [isActiveHamburger, setIsActiveHamburger] = useState(false);
   const handleHamburgerIsActive = (e) => {
@@ -85,6 +86,9 @@ function App() {
               <Switch>
                 <Route path="/" exact>
                   <Home />
+                </Route>
+                <Route path="/history" exact>
+                  <History />
                 </Route>
               </Switch>
             </Wrapper>

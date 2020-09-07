@@ -1,24 +1,115 @@
-import React from "react";
-import { Table, Tr, Th } from "./TransactionTable.css";
+import React, { useState, Fragment } from "react";
+import { Table, Tr, Th, Td, P, Span } from "./TransactionTable.css";
 import { IoIosArrowDown } from "react-icons/io";
-const TransactionTable = () => {
+
+import { connect } from "react-redux";
+
+import { formatCurrency } from "utils";
+
+import { SearchInput } from "components";
+
+const TransactionTable = ({
+  transactions,
+  transactionNumber = transactions.length,
+  activateInput,
+}) => {
   const tableNames = ["Transaction", "Amount", "Status", "Date"];
-  const handleTrClick = (nameTransaction) => {
-    console.log(nameTransaction);
+  const handleTitleClick = (nameTransaction) => {
+    let states;
+    nameTransaction = nameTransaction.toLowerCase();
+    setFlaga(nameTransaction);
+    if (flaga === nameTransaction) {
+      let transactionCopy = newTransactions.reverse();
+      setTransactions(new Array(...transactionCopy));
+
+      ++state[nameTransaction];
+      setState(state);
+    } else {
+      states = {
+        transaction: 0,
+        amount: 0,
+        status: 0,
+        date: 0,
+      };
+      let transactionCopy = newTransactions;
+      for (let j = 0; j < transactionCopy.length - 1; j++) {
+        for (let i = 0; i < transactionCopy.length - 1; i++) {
+          if (
+            transactionCopy[i][nameTransaction] >=
+            transactionCopy[i + 1][nameTransaction]
+          ) {
+          } else {
+            let pom = transactionCopy[i];
+            transactionCopy[i] = transactionCopy[i + 1];
+            transactionCopy[i + 1] = pom;
+          }
+        }
+      }
+
+      setTransactions(transactionCopy);
+      ++states[nameTransaction];
+      setState(states);
+    }
   };
+  const handleChangeInput = (e) => {
+    console.log(e.target.value);
+    let transactionsIncludeValue = [];
+    let value = e.target.value.toLocaleLowerCase();
+    transactions.map((transaction) => {
+      if (transaction.transaction.toLowerCase().includes(value)) {
+        transactionsIncludeValue.push(transaction);
+      } else if (transaction.amount.toString().includes(value)) {
+        transactionsIncludeValue.push(transaction);
+      } else if (transaction.status.toLowerCase().includes(value)) {
+        transactionsIncludeValue.push(transaction);
+      }
+    });
+    setTransactions(transactionsIncludeValue);
+  };
+  const [newTransactions, setTransactions] = useState(
+    transactions.slice(0, transactionNumber)
+  );
+  const [flaga, setFlaga] = useState("");
+
+  const [state, setState] = useState({
+    transaction: 0,
+    amount: 0,
+    status: 0,
+    date: 0,
+  });
   return (
-    <Table>
-      <tbody>
-        <Tr>
-          {tableNames.map((th) => (
-            <Th key={th} onClick={() => handleTrClick(th)}>
-              {th} <IoIosArrowDown />
-            </Th>
-          ))}
-        </Tr>
-      </tbody>
-    </Table>
+    <Fragment>
+      {activateInput && <SearchInput onChange={handleChangeInput} />}
+      <Table>
+        <tbody>
+          <Tr>
+            {tableNames.map((th, index) => (
+              <Th key={th} onClick={() => handleTitleClick(th)}>
+                {th}
+                <Span state={state[tableNames[index].toLocaleLowerCase()]}>
+                  <IoIosArrowDown />
+                </Span>
+              </Th>
+            ))}
+          </Tr>
+          {newTransactions.map((transaction) => {
+            return (
+              <Tr key={transaction.account_id}>
+                <Td>{transaction.transaction}</Td>
+                <Td>{formatCurrency(transaction.amount)}</Td>
+                <Td>
+                  <P status={transaction.status}>{transaction.status}</P>
+                </Td>
+                <Td>{transaction.authorized_date.toDateString()}</Td>
+              </Tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </Fragment>
   );
 };
 
-export default TransactionTable;
+export default connect((state) => {
+  return { transactions: state.transactions.transactions };
+})(TransactionTable);

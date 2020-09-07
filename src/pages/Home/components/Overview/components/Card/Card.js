@@ -8,6 +8,7 @@ import {
   PMoney,
   A,
 } from "./Card.css";
+import { formatCurrency } from "utils";
 const Card = ({ item }) => {
   return (
     <Wrapper>
@@ -15,7 +16,7 @@ const Card = ({ item }) => {
         <Img src={item.image} alt="" />
         <DivInformation>
           <P>{item.name}</P>
-          <PMoney>{item.account}</PMoney>
+          <PMoney>{formatCurrency(item.account)}</PMoney>
         </DivInformation>
       </DivCard>
       <A href="#">View all</A>

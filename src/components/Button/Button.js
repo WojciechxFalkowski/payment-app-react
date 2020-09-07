@@ -1,5 +1,5 @@
 import React, { Fragment, useMemo } from "react";
-import { RootButton, RegularButton, BackgroundButton } from "./Button.css";
+import { RegularButton, BackgroundButton } from "./Button.css";
 const Button = ({ variant, children, ...props }) => {
   const Component = useMemo(() => {
     switch (variant) {
