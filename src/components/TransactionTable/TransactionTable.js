@@ -55,7 +55,7 @@ const TransactionTable = ({
     console.log(e.target.value);
     let transactionsIncludeValue = [];
     let value = e.target.value.toLocaleLowerCase();
-    transactions.map((transaction) => {
+    transactions.forEach((transaction) => {
       if (transaction.transaction.toLowerCase().includes(value)) {
         transactionsIncludeValue.push(transaction);
       } else if (transaction.amount.toString().includes(value)) {

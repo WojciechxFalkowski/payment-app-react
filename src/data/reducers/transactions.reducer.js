@@ -1,7 +1,7 @@
 import {} from "data/constants";
-import initalState from "./../data";
+import { initialTransactionState } from "./../data";
 
-function transaction(state = initalState, action) {
+function transaction(state = initialTransactionState, action) {
   switch (action.type) {
     default:
       return state;

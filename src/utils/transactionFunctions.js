@@ -32,7 +32,7 @@ export const getLastWeekTransaction = (transactions) => {
 };
 export const getMoney = (allTransactions) => {
   let accountMoney = 0;
-  allTransactions.map((transaction) => {
+  allTransactions.forEach((transaction) => {
     accountMoney += transaction.amount;
   });
   return accountMoney;
