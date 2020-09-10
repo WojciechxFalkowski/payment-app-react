@@ -17,6 +17,7 @@ import {
   Cards,
   Recipients,
   AddRecipient,
+  Reports,
 } from "pages";
 
 function App() {
@@ -111,6 +112,9 @@ function App() {
                 </Route>
                 <Route path="/recipients/add" exact>
                   <AddRecipient />
+                </Route>
+                <Route path="/reports" exact>
+                  <Reports />
                 </Route>
               </Switch>
             </Wrapper>
