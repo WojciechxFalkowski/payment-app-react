@@ -5,7 +5,39 @@ import { Card } from "./components";
 import accountBalance from "./../../../../images/overview/accountBalance.png";
 import pending from "./../../../../images/overview/pending.png";
 import processed from "./../../../../images/overview/processed.png";
-const Overview = () => {
+import { connect } from "react-redux";
+const Overview = ({ transactions }) => {
+  const account = {
+    accountBalance: {
+      transactions: transactions.filter(
+        (transaction) => transaction.status.toLowerCase() === "success"
+      ),
+      sum: 0,
+    },
+    pending: {
+      transactions: transactions.filter(
+        (transaction) => transaction.status.toLowerCase() === "processing"
+      ),
+      sum: 0,
+    },
+    processed: {
+      transactions: transactions.filter(
+        (transaction) => transaction.status.toLowerCase() === "processed"
+      ),
+      sum: 0,
+    },
+  };
+
+  account.accountBalance.transactions.forEach((transaction) => {
+    account.accountBalance.sum += transaction.amount;
+  });
+  account.pending.transactions.forEach((transaction) => {
+    account.pending.sum += transaction.amount;
+  });
+  account.processed.transactions.forEach((transaction) => {
+    account.processed.sum += transaction.amount;
+  });
+
   const [isActiveH4, setIsActiveH4] = useState(true);
   const handleH4Click = () => {
     setIsActiveH4(!isActiveH4);
@@ -13,11 +45,11 @@ const Overview = () => {
   const cardArray = [
     {
       name: "Account Balance",
-      account: 30659.45,
+      account: account.accountBalance.sum,
       image: accountBalance,
     },
-    { name: "Pending", account: -19500.0, image: pending },
-    { name: "Processed", account: 28750.0, image: processed },
+    { name: "Pending", account: account.pending.sum, image: pending },
+    { name: "Processed", account: account.processed.sum, image: processed },
   ];
 
   return (
@@ -36,4 +68,8 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default connect((state) => {
+  return {
+    transactions: state.transactions.transactions,
+  };
+})(Overview);
