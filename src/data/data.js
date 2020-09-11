@@ -1070,3 +1070,6 @@ export const initialProfileState = {
   email: "johnsmith@gmail.com",
   phoneNumber: "666777888",
 };
+export const isActiveOverview = {
+  isActive: true,
+};

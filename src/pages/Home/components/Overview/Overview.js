@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import rectangle from "./../../../../images/icons/rectangle.png";
 import { Title, Img, Wrapper, Block } from "./Overview.css";
 import { Card } from "./components";
@@ -6,7 +6,9 @@ import accountBalance from "./../../../../images/overview/accountBalance.png";
 import pending from "./../../../../images/overview/pending.png";
 import processed from "./../../../../images/overview/processed.png";
 import { connect } from "react-redux";
-const Overview = ({ transactions }) => {
+import { overview } from "data/actions/overview.action";
+const Overview = ({ transactions, overviewIsActive, overview }) => {
+  console.log(overviewIsActive.isActive);
   const account = {
     accountBalance: {
       transactions: transactions.filter(
@@ -38,9 +40,9 @@ const Overview = ({ transactions }) => {
     account.processed.sum += transaction.amount;
   });
 
-  const [isActiveH4, setIsActiveH4] = useState(true);
   const handleH4Click = () => {
-    setIsActiveH4(!isActiveH4);
+    overviewIsActive.isActive = !overviewIsActive.isActive;
+    overview(overviewIsActive);
   };
   const cardArray = [
     {
@@ -55,9 +57,14 @@ const Overview = ({ transactions }) => {
   return (
     <Fragment>
       <Title onClick={handleH4Click}>
-        Overview <Img src={rectangle} isActiveH4={isActiveH4} alt="" />
+        Overview
+        <Img
+          src={rectangle}
+          isActiveOverview={overviewIsActive.isActive}
+          alt=""
+        />
       </Title>
-      <Wrapper isActiveH4={isActiveH4}>
+      <Wrapper isActiveOverview={overviewIsActive.isActive}>
         <Block>
           {cardArray.map((item) => (
             <Card key={item.name} item={item} />
@@ -68,8 +75,12 @@ const Overview = ({ transactions }) => {
   );
 };
 
-export default connect((state) => {
-  return {
-    transactions: state.transactions.transactions,
-  };
-})(Overview);
+export default connect(
+  (state) => {
+    return {
+      transactions: state.transactions.transactions,
+      overviewIsActive: state.overview,
+    };
+  },
+  { overview }
+)(Overview);

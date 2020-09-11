@@ -12,7 +12,8 @@ import { BiBuildingHouse } from "react-icons/bi";
 import { Istyled } from "./Profile.css";
 import profilePicture from "./../../images/profile/joseph-gonzalez_50x50.jpg";
 import { Button } from "components";
-const Profile = () => {
+import { connect } from "react-redux";
+const Profile = ({ profile: { name, surname } }) => {
   const handleAddMoneyButton = () => {};
 
   const handleSendMoneyButton = () => {};
@@ -21,7 +22,9 @@ const Profile = () => {
       <AppPersonality>
         <Img src={profilePicture} alt="" />
         <Person>
-          <Pname>Good Morning, John Smith</Pname>
+          <Pname>
+            Good Morning, {name} {surname}
+          </Pname>
           <P>
             <Istyled>
               <BiBuildingHouse />
@@ -42,4 +45,8 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default connect((state) => {
+  return {
+    profile: state.profile,
+  };
+})(Profile);

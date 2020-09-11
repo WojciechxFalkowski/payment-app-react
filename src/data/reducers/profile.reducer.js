@@ -1,7 +1,7 @@
 import { PROFILE_UPDATE } from "data/constants";
 import { initialProfileState } from "./../data";
 
-function transaction(state = initialProfileState, action) {
+function profile(state = initialProfileState, action) {
   switch (action.type) {
     case PROFILE_UPDATE:
       return {
@@ -15,4 +15,4 @@ function transaction(state = initialProfileState, action) {
   }
 }
 
-export default transaction;
+export default profile;
