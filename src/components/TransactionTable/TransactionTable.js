@@ -77,6 +77,9 @@ const TransactionTable = ({
     status: 0,
     date: 0,
   });
+  const handleTransactionClick = () => {
+    console.log("Dziala");
+  };
   return (
     <Fragment>
       {activateInput && <SearchInput onChange={handleChangeInput} />}
@@ -95,7 +98,9 @@ const TransactionTable = ({
           {newTransactions.map((transaction) => {
             return (
               <Tr key={transaction.account_id}>
-                <Td>{transaction.transaction}</Td>
+                <Td onClick={handleTransactionClick}>
+                  {transaction.transaction}
+                </Td>
                 <Td>{formatCurrency(transaction.amount)}</Td>
                 <Td>
                   <P status={transaction.status}>{transaction.status}</P>

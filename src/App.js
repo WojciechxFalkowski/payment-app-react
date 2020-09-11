@@ -18,6 +18,7 @@ import {
   Recipients,
   AddRecipient,
   Reports,
+  Settings,
 } from "pages";
 
 function App() {
@@ -62,16 +63,6 @@ function App() {
       url: "/settings",
       icon: <IoMdSettings />,
     },
-    {
-      name: "Help",
-      url: "/help",
-      icon: <BiHelpCircle />,
-    },
-    {
-      name: "Privacy",
-      url: "/privacy",
-      icon: <MdSecurity />,
-    },
   ];
   return (
     <Fragment>
@@ -115,6 +106,9 @@ function App() {
                 </Route>
                 <Route path="/reports" exact>
                   <Reports />
+                </Route>
+                <Route path="/settings" exact>
+                  <Settings />
                 </Route>
               </Switch>
             </Wrapper>

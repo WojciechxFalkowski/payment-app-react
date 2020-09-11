@@ -1064,3 +1064,9 @@ export const initialRecipientsState = {
     },
   ],
 };
+export const initialProfileState = {
+  name: "John",
+  surname: "Smith",
+  email: "johnsmith@gmail.com",
+  phoneNumber: "666777888",
+};
