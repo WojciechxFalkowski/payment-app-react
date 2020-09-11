@@ -15,7 +15,7 @@ export const ListItem = styled.li`
   margin: 2vh 1vw;
   padding: 2vh 0;
   overflow: hidden;
-  background-color: white;
+
   @media (min-width: 640px) {
     flex-basis: 46%;
   }

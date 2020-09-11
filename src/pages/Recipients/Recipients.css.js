@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   @media (min-width: 1024px) {
     position: relative;
+    background-color: #fff;
   }
 `;
 export const H1 = styled.h1`

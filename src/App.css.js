@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
-  min-height: 100%;
+  min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
 `;
 export const MobileMenu = styled.div`
@@ -45,9 +45,15 @@ export const AppMenu = styled.div`
     max-width: 200px;
   }
 `;
+
 export const Wrapper = styled.div`
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  background-color: #f1f5f9;
+  height: 100%;
+`;
+export const Box = styled.div`
+  width: 96%;
+  margin: 2vh auto;
 `;
 export const Main = styled.div`
   display: flex;

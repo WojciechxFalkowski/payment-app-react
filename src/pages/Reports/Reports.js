@@ -8,6 +8,7 @@ import {
   getLastYearQuarterTransactions,
   getYearsTransaction,
 } from "utils/transactionFunctions";
+import { Wrapper } from "./Reports.css";
 const Reports = ({ transactions }) => {
   const getDaysTrans = getDaysTransaction(transactions);
   const getMonth = getLastYearMonths();
@@ -53,7 +54,7 @@ const Reports = ({ transactions }) => {
       options: {
         title: {
           display: true,
-          text: getMonth[new Date().getMonth()], //this.months[new Date().getMonth()]
+          text: getMonth[new Date().getMonth()],
         },
         legend: {
           display: false,
@@ -287,7 +288,7 @@ const Reports = ({ transactions }) => {
   ];
 
   return (
-    <React.Fragment>
+    <Wrapper>
       <Chart specification={specification[0]}>Balance of current month</Chart>
       <Chart specification={specification[1]} maxHeight={300} maxWidth={500}>
         Monthly balance
@@ -298,7 +299,7 @@ const Reports = ({ transactions }) => {
       <Chart specification={specification[3]} maxHeight={300} maxWidth={500}>
         Yearly balance
       </Chart>
-    </React.Fragment>
+    </Wrapper>
   );
 };
 export default connect((state) => {

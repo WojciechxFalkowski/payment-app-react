@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Wrapper,
-  DivCard,
-  Img,
-  DivInformation,
-  P,
-  PMoney,
-  A,
-} from "./Card.css";
+import { Wrapper, DivCard, Img, DivInformation, P, PMoney } from "./Card.css";
 import { formatCurrency } from "utils";
 const Card = ({ item }) => {
   return (
@@ -19,7 +11,6 @@ const Card = ({ item }) => {
           <PMoney>{formatCurrency(item.account)}</PMoney>
         </DivInformation>
       </DivCard>
-      <A href="#">View all</A>
     </Wrapper>
   );
 };

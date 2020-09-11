@@ -3,8 +3,8 @@ export const Table = styled.table`
   font-size: 0.8rem;
   text-align: center;
   border-collapse: collapse;
-  margin: 0 auto;
-  margin-bottom: 5vh;
+  margin: 0 auto 5vh auto;
+}
   @media (min-width: 500px) {
     width: 100%;
   }
@@ -25,15 +25,16 @@ export const Tr = styled.tr`
   }
 `;
 export const Th = styled.th`
-  :nth-child(1) {
-    width: 10em;
-  }
   font-size: 0.7rem;
   color: rgb(134, 134, 134);
   font-weight: normal;
   cursor: pointer;
   width: 6em;
-  padding: 2px;
+  padding: 1vh 0;
+  :nth-child(1) {
+    width: 10em;
+  }
+
   @media (min-width: 500px) {
     font-size: 1rem;
   }

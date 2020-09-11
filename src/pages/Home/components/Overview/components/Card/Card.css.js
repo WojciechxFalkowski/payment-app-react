@@ -41,12 +41,3 @@ export const P = styled.p``;
 export const PMoney = styled(P)`
   font-weight: bold;
 `;
-export const A = styled.a`
-  color: ${({ theme: { colors } }) => colors.blue.dark};
-  text-decoration: none;
-  background-color: #fbfdfe;
-  padding: 1vh 5vw;
-  @media (min-width: 1024px) {
-    padding: 1vh 2vw;
-  }
-`;

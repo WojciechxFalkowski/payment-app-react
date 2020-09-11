@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import GlobalStyles from "./index.css";
 import { Navigation, Hamburger, Profile } from "components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container, MobileMenu, AppMenu, Wrapper, Main } from "App.css";
+import { Container, MobileMenu, AppMenu, Wrapper, Box, Main } from "App.css";
 import { FaHome, FaHistory, FaRegCreditCard } from "react-icons/fa";
 import { MdLinearScale, MdAssessment, MdSecurity } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -86,35 +86,37 @@ function App() {
           <Main>
             <Profile />
             <Wrapper>
-              <Switch>
-                <Route path="/" exact>
-                  <Home />
-                </Route>
-                <Route path="/history" exact>
-                  <History />
-                </Route>
-                <Route path="/history/:id" exact>
-                  <Id />
-                </Route>
-                <Route path="/balances">
-                  <Balances />
-                </Route>
-                <Route path="/cards">
-                  <Cards />
-                </Route>
-                <Route path="/recipients" exact>
-                  <Recipients />
-                </Route>
-                <Route path="/recipients/add" exact>
-                  <AddRecipient />
-                </Route>
-                <Route path="/reports">
-                  <Reports />
-                </Route>
-                <Route path="/settings">
-                  <Settings />
-                </Route>
-              </Switch>
+              <Box>
+                <Switch>
+                  <Route path="/" exact>
+                    <Home />
+                  </Route>
+                  <Route path="/history" exact>
+                    <History />
+                  </Route>
+                  <Route path="/history/:id" exact>
+                    <Id />
+                  </Route>
+                  <Route path="/balances">
+                    <Balances />
+                  </Route>
+                  <Route path="/cards">
+                    <Cards />
+                  </Route>
+                  <Route path="/recipients" exact>
+                    <Recipients />
+                  </Route>
+                  <Route path="/recipients/add" exact>
+                    <AddRecipient />
+                  </Route>
+                  <Route path="/reports">
+                    <Reports />
+                  </Route>
+                  <Route path="/settings">
+                    <Settings />
+                  </Route>
+                </Switch>
+              </Box>{" "}
             </Wrapper>
           </Main>
         </Container>

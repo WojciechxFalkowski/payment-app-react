@@ -6,6 +6,7 @@ import {
   getLastWeekTransactionMoney,
   getLastWeekDays,
 } from "utils/transactionFunctions";
+import { Wrapper } from "./Balances.css";
 import { connect } from "react-redux";
 const Balances = ({ transactions }) => {
   const specyfication = [
@@ -55,11 +56,11 @@ const Balances = ({ transactions }) => {
     {
       type: "line",
       data: {
-        labels: getLastWeekTransactionMoney(transactions),
+        labels: getLastWeekDays(),
         datasets: [
           {
             label: "Money",
-            data: getLastWeekDays(),
+            data: getLastWeekTransactionMoney(transactions),
             backgroundColor: "rgba(255, 99, 132, 0.4)",
             borderColor: "rgba(255, 99, 132, 1)",
             borderWidth: 1,
@@ -98,8 +99,10 @@ const Balances = ({ transactions }) => {
   ];
   return (
     <Fragment>
-      <Chart specification={specyfication[0]} />
-      <Chart specification={specyfication[1]} />
+      <Wrapper>
+        <Chart specification={specyfication[0]} />
+        <Chart specification={specyfication[1]} />
+      </Wrapper>
     </Fragment>
   );
 };
