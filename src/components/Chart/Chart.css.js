@@ -6,7 +6,14 @@ export const Wrapper = styled.div`
 `;
 export const Canvas = styled.canvas`
   margin: 0 auto;
-  max-height: 500px;
-  max-width: 900px;
+  max-height: ${(props) =>
+    props.maxHeight ? `${props.maxHeight}px` : "500px"};
+  max-width: ${(props) => (props.maxWidth ? `${props.maxWidth}px` : "900px")};
   padding: 2vh 0;
+`;
+export const H1 = styled.h1`
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
 `;

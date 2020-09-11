@@ -38,8 +38,6 @@ export const getMoney = (allTransactions) => {
   return accountMoney;
 };
 
-//******************************************************** */
-//***********************************************************/
 export const getLastWeekTransactionMoney = (allTransactions) => {
   let transaction = getLastWeekTransaction(allTransactions);
   let money = [0, 0, 0, 0, 0, 0];
@@ -134,7 +132,7 @@ export const getLastWeekDays = () => {
   }
   return labels;
 };
-//***********************************************************/
+
 export const getLastDayTransactionMoney = (transactionsArray) => {
   let transactions = getLastWeekTransaction(transactionsArray);
 
@@ -218,3 +216,170 @@ export const getLastDayHours = () => {
   }
   return hoursDates;
 };
+//********************************************************************* */
+export const getDaysTransaction = (transactionsArray) => {
+  const today = todayDate();
+  let dayOfMonth = new Date().getDate();
+  let daysData = {
+    daysMoney: [],
+    daysName: [],
+  };
+  let transactions = transactionsArray.filter(
+    (transaction) =>
+      transaction.status.toLowerCase() === "success" &&
+      transaction.date >
+        new Date(
+          today[0],
+          today[1],
+          today[2] - dayOfMonth + 1,
+          today[3],
+          today[4],
+          today[5]
+        )
+  );
+
+  for (let i = 0; i < dayOfMonth + 1; ++i) {
+    daysData.daysMoney[i] = 0;
+    daysData.daysName[i] = `${i}`;
+  }
+  for (let i = 0; i < transactions.length; ++i) {
+    let transactionDate = transactions[i].date.getDate();
+    if (transactions[i].type_transaction.toLowerCase() === "in")
+      daysData.daysMoney[transactionDate] =
+        daysData.daysMoney[transactionDate] + transactions[i].amount;
+    else if (transactions[i].type_transaction.toLowerCase() === "out")
+      daysData.daysMoney[transactionDate] =
+        daysData.daysMoney[transactionDate] - transactions[i].amount;
+  }
+  daysData.daysMoney.splice(0, 1);
+  daysData.daysName.splice(0, 1);
+  // console.log(daysData);
+  return daysData;
+};
+
+export const getLastYearMonths = () => {
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return months;
+};
+
+export const getLastYearMonthFilter = (transactionsArray) => {
+  const today = todayDate();
+  let date = new Date(today[0], 0, 1, 0, 0, 0);
+  let transaction = transactionsArray.filter(
+    (transaction) =>
+      transaction.date >= date && transaction.status === "Success"
+  );
+  return transaction;
+};
+export const getLastYearMonthTransaction = (transactionsArray) => {
+  let transactions = getLastYearMonthFilter(transactionsArray);
+  let monthly = {
+    money: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    name: [],
+  };
+  let monthsName = getLastYearMonths();
+  for (let i = 0; i < transactions.length; ++i) {
+    let transactionMonth = transactions[i].date.getMonth();
+    if (transactions[i].type_transaction.toLowerCase() === "in")
+      monthly.money[transactionMonth] =
+        monthly.money[transactionMonth] + transactions[i].amount;
+    else if (transactions[i].type_transaction.toLowerCase() === "out")
+      monthly.money[transactionMonth] =
+        monthly.money[transactionMonth] - transactions[i].amount;
+  }
+  for (let i = 0; i < monthly.money.length; ++i) {
+    if (monthly.money[i] !== 0) {
+      monthly.name.push(monthsName[i]);
+    }
+  }
+  monthly.money = monthly.money.filter((monthlyMoney) => monthlyMoney !== 0);
+  return monthly;
+};
+export const getLastYearQuarterTransactions = (transactionsArray) => {
+  let monthly = getLastYearMonthTransaction(transactionsArray);
+  let quarterMoney = [0, 0, 0, 0];
+  let quarterName = ["I", "II", "III", "IV"];
+  let monthsName = getLastYearMonths();
+  let quarter = {
+    quarterMoney: [],
+    quarterName: [],
+  };
+  for (let i = 0; i < monthly.money.length; ++i) {
+    if (
+      monthly.name[i] === monthsName[0] ||
+      monthly.name[i] === monthsName[1] ||
+      monthly.name[i] === monthsName[2]
+    ) {
+      quarterMoney[0] = quarterMoney[0] + monthly.money[i];
+    } else if (
+      monthly.name[i] === monthsName[3] ||
+      monthly.name[i] === monthsName[4] ||
+      monthly.name[i] === monthsName[5]
+    ) {
+      quarterMoney[1] = quarterMoney[1] + monthly.money[i];
+    } else if (
+      monthly.name[i] === monthsName[6] ||
+      monthly.name[i] === monthsName[7] ||
+      monthly.name[i] === monthsName[8]
+    ) {
+      quarterMoney[2] = quarterMoney[2] + monthly.money[i];
+    } else {
+      quarterMoney[3] = quarterMoney[3] + monthly.money[i];
+    }
+  }
+  quarterMoney.forEach((data, index) => {
+    if (data !== 0) {
+      quarter.quarterName.push(quarterName[index]);
+    }
+  });
+  quarter.quarterMoney = quarterMoney.filter((data) => data !== 0);
+
+  return quarter;
+};
+export const getYearsTransaction=(transactionsArray)=> {
+  let transactions = transactionsArray.filter(
+    (transaction) => transaction.status.toLowerCase() === 'success'
+  );
+  let lastTransactionYear = transactions[
+    transactions.length - 1
+  ].date.getFullYear();
+  let firstTransactionYear = transactions[0].date.getFullYear();
+  let years = Array(firstTransactionYear - lastTransactionYear + 1);
+  let yearsData = {
+    years: [],
+    yearsName: [],
+  };
+  for (let i = 0; i < years.length; ++i) {
+    years[i] = 0;
+  }
+  for (let i = 0; i < transactions.length; ++i) {
+    let transactionYear =
+      transactions[i].date.getFullYear() - lastTransactionYear;
+    if (transactions[i].type_transaction.toLowerCase() === 'in')
+      years[transactionYear] =
+        years[transactionYear] + transactions[i].amount;
+    else if (transactions[i].type_transaction.toLowerCase() === 'out')
+      years[transactionYear] =
+        years[transactionYear] - transactions[i].amount;
+  }
+  for (let i = 0; i < years.length; ++i) {
+    if (years[i] !== 0) {
+      yearsData.yearsName.push(`${i + lastTransactionYear}`);
+    }
+  }
+  yearsData.years = years.filter((yearMoney) => yearMoney !== 0);
+  return yearsData;
+}
