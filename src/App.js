@@ -19,6 +19,7 @@ import {
   AddRecipient,
   Reports,
   Settings,
+  Id,
 } from "pages";
 
 function App() {
@@ -89,8 +90,11 @@ function App() {
                 <Route path="/" exact>
                   <Home />
                 </Route>
-                <Route path="/history">
+                <Route path="/history" exact>
                   <History />
+                </Route>
+                <Route path="/history/:id" exact>
+                  <Id />
                 </Route>
                 <Route path="/balances">
                   <Balances />
@@ -104,10 +108,10 @@ function App() {
                 <Route path="/recipients/add" exact>
                   <AddRecipient />
                 </Route>
-                <Route path="/reports" exact>
+                <Route path="/reports">
                   <Reports />
                 </Route>
-                <Route path="/settings" exact>
+                <Route path="/settings">
                   <Settings />
                 </Route>
               </Switch>

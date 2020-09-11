@@ -46,7 +46,14 @@ export const Td = styled.td`
     padding-left: 1vw;
     color: rgb(134, 134, 134);
   }
-
+  a {
+    color: rgb(134, 134, 134);
+    text-decoration: none;
+  }
+  a:hover {
+    color: ${({ theme: { colors } }) => colors.blue.dark};
+    text-decoration: underline;
+  }
   :nth-child(4) {
     padding-right: 1vw;
     color: rgb(134, 134, 134);

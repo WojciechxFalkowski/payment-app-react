@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { formatCurrency } from "utils";
 
 import { SearchInput } from "components";
-
+import { Link } from "react-router-dom";
 const TransactionTable = ({
   transactions,
   transactionNumber = transactions.length,
@@ -52,7 +52,6 @@ const TransactionTable = ({
     }
   };
   const handleChangeInput = (e) => {
-    console.log(e.target.value);
     let transactionsIncludeValue = [];
     let value = e.target.value.toLocaleLowerCase();
     transactions.forEach((transaction) => {
@@ -77,9 +76,7 @@ const TransactionTable = ({
     status: 0,
     date: 0,
   });
-  const handleTransactionClick = () => {
-    console.log("Dziala");
-  };
+
   return (
     <Fragment>
       {activateInput && <SearchInput onChange={handleChangeInput} />}
@@ -98,8 +95,10 @@ const TransactionTable = ({
           {newTransactions.map((transaction) => {
             return (
               <Tr key={transaction.account_id}>
-                <Td onClick={handleTransactionClick}>
-                  {transaction.transaction}
+                <Td>
+                  <Link to={"history/" + transaction.account_id}>
+                    {transaction.transaction}
+                  </Link>
                 </Td>
                 <Td>{formatCurrency(transaction.amount)}</Td>
                 <Td>

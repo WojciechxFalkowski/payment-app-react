@@ -6,3 +6,4 @@ export { default as Recipients } from "./Recipients";
 export { default as AddRecipient } from "./AddRecipient";
 export { default as Reports } from "./Reports";
 export { default as Settings } from "./Settings";
+export { default as Id } from "./History/ID";

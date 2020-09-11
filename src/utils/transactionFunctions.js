@@ -253,7 +253,6 @@ export const getDaysTransaction = (transactionsArray) => {
   }
   daysData.daysMoney.splice(0, 1);
   daysData.daysName.splice(0, 1);
-  // console.log(daysData);
   return daysData;
 };
 
@@ -349,9 +348,9 @@ export const getLastYearQuarterTransactions = (transactionsArray) => {
 
   return quarter;
 };
-export const getYearsTransaction=(transactionsArray)=> {
+export const getYearsTransaction = (transactionsArray) => {
   let transactions = transactionsArray.filter(
-    (transaction) => transaction.status.toLowerCase() === 'success'
+    (transaction) => transaction.status.toLowerCase() === "success"
   );
   let lastTransactionYear = transactions[
     transactions.length - 1
@@ -368,12 +367,10 @@ export const getYearsTransaction=(transactionsArray)=> {
   for (let i = 0; i < transactions.length; ++i) {
     let transactionYear =
       transactions[i].date.getFullYear() - lastTransactionYear;
-    if (transactions[i].type_transaction.toLowerCase() === 'in')
-      years[transactionYear] =
-        years[transactionYear] + transactions[i].amount;
-    else if (transactions[i].type_transaction.toLowerCase() === 'out')
-      years[transactionYear] =
-        years[transactionYear] - transactions[i].amount;
+    if (transactions[i].type_transaction.toLowerCase() === "in")
+      years[transactionYear] = years[transactionYear] + transactions[i].amount;
+    else if (transactions[i].type_transaction.toLowerCase() === "out")
+      years[transactionYear] = years[transactionYear] - transactions[i].amount;
   }
   for (let i = 0; i < years.length; ++i) {
     if (years[i] !== 0) {
@@ -382,4 +379,4 @@ export const getYearsTransaction=(transactionsArray)=> {
   }
   yearsData.years = years.filter((yearMoney) => yearMoney !== 0);
   return yearsData;
-}
+};
