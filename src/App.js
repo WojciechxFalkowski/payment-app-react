@@ -65,6 +65,7 @@ function App() {
       icon: <IoMdSettings />,
     },
   ];
+
   return (
     <Fragment>
       <GlobalStyles />

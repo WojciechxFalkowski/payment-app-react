@@ -6,6 +6,7 @@ export const Title = styled.h4`
   cursor: pointer;
 `;
 export const Img = styled.img`
+  margin-left: 5px;
   width: 10px;
   height: 10px;
   transition: transform 0.3s ease-out;

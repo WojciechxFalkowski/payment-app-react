@@ -1,17 +1,14 @@
 import styled from "styled-components";
 export const Wrapper = styled.div`
+  background-color: #fff;
   @media (min-width: 1024px) {
     position: relative;
-    background-color: #fff;
   }
 `;
 export const H1 = styled.h1`
   text-align: center;
   font-size: 1.4rem;
   padding: 2vh 0;
-  @media (min-width: 1024px) {
-    position: relative;
-  }
 `;
 export const P = styled.p`
   text-align: center;

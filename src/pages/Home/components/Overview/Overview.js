@@ -1,14 +1,13 @@
 import React, { Fragment } from "react";
-import rectangle from "./../../../../images/icons/rectangle.png";
+import rectangle from "images/icons/rectangle.png";
 import { Title, Img, Wrapper, Block } from "./Overview.css";
 import { Card } from "./components";
-import accountBalance from "./../../../../images/overview/accountBalance.png";
-import pending from "./../../../../images/overview/pending.png";
-import processed from "./../../../../images/overview/processed.png";
+import accountBalance from "images/overview/accountBalance.png";
+import pending from "images/overview/pending.png";
+import processed from "images/overview/processed.png";
 import { connect } from "react-redux";
 import { overview } from "data/actions/overview.action";
 const Overview = ({ transactions, overviewIsActive, overview }) => {
-  console.log(overviewIsActive.isActive);
   const account = {
     accountBalance: {
       transactions: transactions.filter(

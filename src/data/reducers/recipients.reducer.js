@@ -1,5 +1,5 @@
 import { initialRecipientsState } from "./../data";
-import { ADD_RECIPIENT } from "data/constants";
+import { ADD_RECIPIENT, REMOVE_RECIPIENT } from "data/constants";
 function recipients(state = initialRecipientsState, action) {
   switch (action.type) {
     case ADD_RECIPIENT:
@@ -18,7 +18,13 @@ function recipients(state = initialRecipientsState, action) {
           },
         ],
       };
-
+    case REMOVE_RECIPIENT:
+      const filterRecipients = state.recipientsList.filter(
+        (recipient) => recipient.accountNumber !== action.id
+      );
+      return {
+        recipientsList: filterRecipients,
+      };
     default:
       return state;
   }

@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 import { connect } from "react-redux";
 import { addRecipient } from "data/actions/recipients.actions";
-// import { Button } from "components";
 import {
   Wrapper,
   FormWrapper,

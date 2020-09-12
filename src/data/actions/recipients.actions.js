@@ -1,4 +1,4 @@
-import { ADD_RECIPIENT } from "data/constants";
+import { ADD_RECIPIENT, REMOVE_RECIPIENT } from "data/constants";
 export const addRecipient = ({
   name,
   surname,
@@ -19,5 +19,11 @@ export const addRecipient = ({
     address,
     city,
     country,
+  };
+};
+export const removeRecipient = (id) => {
+  return {
+    type: REMOVE_RECIPIENT,
+    id,
   };
 };

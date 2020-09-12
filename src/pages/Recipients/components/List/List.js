@@ -1,12 +1,19 @@
 import React from "react";
-import { Wrapper, ListItem, ListName, P } from "./List.css";
+import { Wrapper, ListItem, Div, ListName, P } from "./List.css";
 import { connect } from "react-redux";
-const List = ({ recipientsList }) => {
+import { removeRecipient } from "data/actions/recipients.actions";
+const List = ({ recipientsList, removeRecipient }) => {
   if (!recipientsList) recipientsList = [];
+  const handleDeleteRecipient = (id) => {
+    removeRecipient(id);
+  };
   return (
     <Wrapper>
       {recipientsList.map((recipient) => (
         <ListItem key={recipient.accountNumber}>
+          <Div
+            onClick={() => handleDeleteRecipient(recipient.accountNumber)}
+          ></Div>
           <ListName>
             {recipient.name} {recipient.surname}
           </ListName>
@@ -22,6 +29,9 @@ const List = ({ recipientsList }) => {
   );
 };
 
-export default connect((state) => {
-  return { recipientsList: state.recipients.recipientsList };
-})(List);
+export default connect(
+  (state) => {
+    return { recipientsList: state.recipients.recipientsList };
+  },
+  { removeRecipient }
+)(List);

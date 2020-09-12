@@ -12,6 +12,7 @@ export const Wrapper = styled.ul`
   }
 `;
 export const ListItem = styled.li`
+  position: relative;
   margin: 2vh 1vw;
   padding: 2vh 0;
   overflow: hidden;
@@ -24,6 +25,41 @@ export const ListItem = styled.li`
   }
   @media (min-width: 1500px) {
     flex-basis: 25%;
+  }
+`;
+export const Div = styled.div`
+  ${ListItem}:hover & {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    :after,
+    :before {
+      position: absolute;
+      top: 9px;
+      left: 0px;
+      content: "";
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: red;
+    }
+    :after {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    :before {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
   }
 `;
 export const ListName = styled.p`

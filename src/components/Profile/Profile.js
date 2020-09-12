@@ -14,6 +14,8 @@ import profilePicture from "./../../images/profile/joseph-gonzalez_50x50.jpg";
 import { Button } from "components";
 import { connect } from "react-redux";
 const Profile = ({ profile: { name, surname } }) => {
+  const date = new Date().getHours();
+
   const handleAddMoneyButton = () => {};
 
   const handleSendMoneyButton = () => {};
@@ -23,7 +25,13 @@ const Profile = ({ profile: { name, surname } }) => {
         <Img src={profilePicture} alt="" />
         <Person>
           <Pname>
-            Good Morning, {name} {surname}
+            Good
+            {date >= 6 && date < 12
+              ? " Moring"
+              : date >= 12 && date <= 18
+              ? " Afternoon"
+              : " Evening"}
+            , {name} {surname}
           </Pname>
           <P>
             <Istyled>
