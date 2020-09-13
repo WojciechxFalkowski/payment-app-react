@@ -10,6 +10,9 @@ import {
   maxValue,
   composeValidators,
 } from "utils/validation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { StyledContainer } from "./Settings.css";
 const Settings = ({ profile, addRecipient }) => {
   const formFields = {
     fields: [
@@ -64,7 +67,7 @@ const Settings = ({ profile, addRecipient }) => {
       text: " Update Profile",
     },
   };
-
+  const notify = () => toast("Updated!");
   const handleSubmit = (values) => {
     const profile = {
       name: values.name,
@@ -73,9 +76,15 @@ const Settings = ({ profile, addRecipient }) => {
       phoneNumber: values.phoneNumber,
     };
     addRecipient(profile);
+    notify();
   };
 
-  return <FormTemplate formFields={formFields} handleSubmit={handleSubmit} />;
+  return (
+    <>
+      <FormTemplate formFields={formFields} handleSubmit={handleSubmit} />
+      <StyledContainer />
+    </>
+  );
 };
 export default connect(
   (state) => {
