@@ -5,3 +5,4 @@ export { default as Button } from "./Button";
 export { default as TransactionTable } from "./TransactionTable";
 export { default as SearchInput } from "./SearchInput";
 export { default as Chart } from "./Chart";
+export { default as FormTemplate } from "./FormTemplate";
