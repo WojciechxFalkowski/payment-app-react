@@ -10,7 +10,7 @@ import {
   maxValue,
   composeValidators,
 } from "utils/validation";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { StyledContainer } from "./Settings.css";
 const Settings = ({ profile, addRecipient }) => {
@@ -62,7 +62,6 @@ const Settings = ({ profile, addRecipient }) => {
       },
     ],
     button: {
-      variant: "background",
       type: "submit",
       text: " Update Profile",
     },

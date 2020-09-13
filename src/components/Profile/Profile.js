@@ -13,12 +13,15 @@ import { Istyled } from "./Profile.css";
 import profilePicture from "./../../images/profile/joseph-gonzalez_50x50.jpg";
 import { Button } from "components";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 const Profile = ({ profile: { name, surname } }) => {
+  const history = useHistory();
   const date = new Date().getHours();
 
-  const handleAddMoneyButton = () => {};
-
-  const handleSendMoneyButton = () => {};
+  const handleSendMoneyButton = () => {
+    history.push("/send");
+  };
   return (
     <AppPerson>
       <AppPersonality>
@@ -42,11 +45,8 @@ const Profile = ({ profile: { name, surname } }) => {
         </Person>
       </AppPersonality>
       <MainButtons>
-        <Button variant="regular" onClick={handleAddMoneyButton}>
-          Add money
-        </Button>
         <Button variant="background" onClick={handleSendMoneyButton}>
-          Send money
+          Send Money
         </Button>
       </MainButtons>
     </AppPerson>

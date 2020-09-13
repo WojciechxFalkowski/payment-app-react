@@ -154,10 +154,10 @@ const Reports = ({ transactions }) => {
       type: "pie",
 
       data: {
-        labels: lastYearQuarterTransactions.quarterName, //this.quarterMoney.quarterName
+        labels: lastYearQuarterTransactions.quarterName,
         datasets: [
           {
-            data: lastYearQuarterTransactions.quarterMoney, //this.quarterMoney.quarterMoney
+            data: lastYearQuarterTransactions.quarterMoney,
             backgroundColor: [
               "rgba(230, 25, 75,0.2)",
               "rgba(210, 245,60, 0.2)",
@@ -212,10 +212,10 @@ const Reports = ({ transactions }) => {
       type: "pie",
 
       data: {
-        labels: yearsTransaction.yearsName, //this.yearsData.yearsName
+        labels: yearsTransaction.yearsName,
         datasets: [
           {
-            data: yearsTransaction.years, //this.yearsData.years
+            data: yearsTransaction.years,
             backgroundColor: [
               "rgba(230, 25, 75, 0.2)",
               "rgba(245, 130, 48, 0.2)",

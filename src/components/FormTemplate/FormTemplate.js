@@ -5,6 +5,7 @@ import {
   FormWrapper,
   Arrow,
   Input,
+  Textarea,
   Span,
   Button,
 } from "./FormTemplate.css";
@@ -20,22 +21,31 @@ const FormTemplate = ({ formFields: { fields, button }, handleSubmit }) => {
                 name={formField.name}
                 validate={formField.validate}
                 initialValue={formField.initialValue}
+                parse={formField.parse}
               >
                 {({ input, meta }) => (
                   <Wrapper>
                     <label>{formField.text}</label>
-                    <Input
-                      {...input}
-                      type="text"
-                      placeholder={formField.placeholder}
-                    />
+                    {formField.component === "textarea" ? (
+                      <Textarea
+                        {...input}
+                        type="text"
+                        placeholder="Description"
+                      />
+                    ) : (
+                      <Input
+                        {...input}
+                        type={formField.type ? formField.type : "text"}
+                        step={formField.step ? formField.step : undefined}
+                        placeholder={formField.placeholder}
+                      />
+                    )}
                     {meta.error && meta.touched && <Span>{meta.error}</Span>}
                   </Wrapper>
                 )}
               </Field>
             );
           })}
-
           <Button variant={button.variant} type={button.type}>
             {button.text}
           </Button>

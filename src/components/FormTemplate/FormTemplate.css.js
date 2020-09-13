@@ -35,6 +35,18 @@ export const Input = styled.input`
   padding: 5px 10px;
   font-size: 0.9rem;
 `;
+export const Textarea = styled.textarea`
+  box-sizing: border-box;
+  display: block;
+  margin: 1px 0;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  height: 100px;
+  min-width: 195px;
+  min-height: 100px;
+  max-width: 320px;
+  max-height: 200px;
+`;
 export const Span = styled.span`
   font-size: 0.55rem;
   color: red;

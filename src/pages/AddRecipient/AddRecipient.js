@@ -96,7 +96,6 @@ const AddRecipient = ({ addRecipient }) => {
       },
     ],
     button: {
-      variant: "background",
       type: "submit",
       text: " Update Profile",
     },

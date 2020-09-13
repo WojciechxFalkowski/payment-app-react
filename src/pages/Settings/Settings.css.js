@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { ToastContainer } from "react-toastify";
 
-export const StyledContainer = styled(ToastContainer).attrs({
-  // custom props
-})`
+export const StyledContainer = styled(ToastContainer).attrs({})`
   .Toastify__toast-container {
   }
   .Toastify__toast {

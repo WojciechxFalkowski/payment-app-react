@@ -216,7 +216,6 @@ export const getLastDayHours = () => {
   }
   return hoursDates;
 };
-//********************************************************************* */
 export const getDaysTransaction = (transactionsArray) => {
   const today = todayDate();
   let dayOfMonth = new Date().getDate();

@@ -4,10 +4,9 @@ import { Navigation, Hamburger, Profile } from "components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container, MobileMenu, AppMenu, Wrapper, Box, Main } from "App.css";
 import { FaHome, FaHistory, FaRegCreditCard } from "react-icons/fa";
-import { MdLinearScale, MdAssessment, MdSecurity } from "react-icons/md";
+import { MdLinearScale, MdAssessment } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { IoMdSettings } from "react-icons/io";
-import { BiHelpCircle } from "react-icons/bi";
 import theme from "utils/theme";
 import { ThemeProvider } from "styled-components";
 import {
@@ -20,6 +19,7 @@ import {
   Reports,
   Settings,
   Id,
+  SendMoney,
 } from "pages";
 
 function App() {
@@ -92,6 +92,9 @@ function App() {
                   <Route path="/" exact>
                     <Home />
                   </Route>
+                  <Route path="/send" exact>
+                    <SendMoney />
+                  </Route>
                   <Route path="/history" exact>
                     <History />
                   </Route>
@@ -117,7 +120,7 @@ function App() {
                     <Settings />
                   </Route>
                 </Switch>
-              </Box>{" "}
+              </Box>
             </Wrapper>
           </Main>
         </Container>
