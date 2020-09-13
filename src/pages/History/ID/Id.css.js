@@ -1,6 +1,8 @@
 import styled from "styled-components";
 export const Wrapper = styled.div`
   position: relative;
+  background-color: white;
+  padding: 2vh 0;
 `;
 export const Arrow = styled.span`
   position: absolute;

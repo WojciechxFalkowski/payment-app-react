@@ -5,14 +5,7 @@ export const StyledContainer = styled(ToastContainer).attrs({})`
   .Toastify__toast-container {
   }
   .Toastify__toast {
-  }
-  .Toastify__toast--error {
-  }
-  .Toastify__toast--warning {
-  }
-  .Toastify__toast--success {
-  }
-  .Toastify__toast-body {
+    color:#036672;
   }
   .Toastify__progress-bar {
     background: none;

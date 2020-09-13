@@ -63,7 +63,7 @@ const Settings = ({ profile, addRecipient }) => {
     ],
     button: {
       type: "submit",
-      text: " Update Profile",
+      text: "Update Profile",
     },
   };
   const notify = () => toast("Updated!");

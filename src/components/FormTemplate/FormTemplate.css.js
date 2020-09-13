@@ -21,13 +21,6 @@ export const FormWrapper = styled.form`
     grid-template-columns: 1fr 1fr 1fr;
   }
 `;
-export const Arrow = styled.span`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  cursor: pointer;
-  font-size: 1.3rem;
-`;
 
 export const Input = styled.input`
   display: block;

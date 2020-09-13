@@ -97,7 +97,7 @@ const AddRecipient = ({ addRecipient }) => {
     ],
     button: {
       type: "submit",
-      text: " Update Profile",
+      text: "Add contact",
     },
   };
   const history = useHistory();
