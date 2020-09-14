@@ -32,6 +32,10 @@ function App() {
     e.target.classList.toggle("is-active");
     setIsActiveHamburger(!isActiveHamburger);
   };
+  const handleNavigationClick = (e) => {
+    handleHamburgerIsActive(e);
+    window.scrollTo(0, 0);
+  };
   const menu = [
     {
       name: t("Home"),
@@ -84,7 +88,7 @@ function App() {
           </MobileMenu>
           <AppMenu isActiveHamburger={isActiveHamburger}>
             <Navigation
-              onClick={handleHamburgerIsActive}
+              onClick={handleNavigationClick}
               items={menu}
             ></Navigation>
           </AppMenu>
