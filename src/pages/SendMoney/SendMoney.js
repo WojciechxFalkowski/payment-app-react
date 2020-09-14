@@ -20,58 +20,58 @@ const SendMoney = ({ profile }) => {
       {
         name: "name",
         validate: composeValidators(
-          required,
-          minValue(3, `Your name must be between 3 and 12 characters`),
-          maxValue(12, `Your name must be between 3 and 12 characters`)
+          required(t("This field is Required!")),
+          minValue(3, t(`Your name must be between 3 and 12 characters`)),
+          maxValue(12, t(`Your name must be between 3 and 12 characters`))
         ),
         initialValue: profile.name,
-        text: "First Name:",
+        text: t("First Name") + ":",
         placeholder: profile.name,
       },
       {
         name: "surname",
         validate: composeValidators(
-          required,
-          minValue(3, `Your surname must be between 3 and 12 characters`),
-          maxValue(12, `Your surname must be between 3 and 12 characters`)
+          required(t("This field is Required!")),
+          minValue(3, t(`Your surname must be between 3 and 12 characters`)),
+          maxValue(12, t(`Your surname must be between 3 and 12 characters`))
         ),
         initialValue: profile.surname,
-        text: "Last Name:",
+        text: t("Last Name") + ":",
         placeholder: profile.surname,
       },
       {
         name: "accountNumber",
         validate: composeValidators(
-          required,
-          mustBeNumber(`Your account number must be a 12 digits`),
-          minValue(12, `Your account number must be a 12 digits`),
-          maxValue(12, `Your account number must be a 12 digits`)
+          required(t("This field is Required!")),
+          mustBeNumber(t(`Your account number must be a 12 digits`)),
+          minValue(12, t(`Your account number must be a 12 digits`)),
+          maxValue(12, t(`Your account number must be a 12 digits`))
         ),
         initialValue: undefined,
-        text: "To:",
-        placeholder: "Account Number",
+        text: t("To") + ":",
+        placeholder: t("Account Number"),
       },
       {
         name: "amount",
-        validate: composeValidators(required),
+        validate: composeValidators(required(t("This field is Required!"))),
         parse: (value) => parseFloat(value, 10),
         initialValue: undefined,
-        text: "Amount:",
+        text: t("Amount") + ":",
         type: "number",
         step: "1",
-        placeholder: "Amount",
+        placeholder: t("Amount"),
       },
       {
         name: "description",
         initialValue: undefined,
-        text: "Description:",
+        text: t("Description") + ":",
         component: "textarea",
-        placeholder: "Description",
+        placeholder: t("Description"),
       },
     ],
     button: {
       type: "submit",
-      text: "Send",
+      text: t("Send"),
     },
   };
   const notify = (values) => toast(t(`Money sent correctly!`));

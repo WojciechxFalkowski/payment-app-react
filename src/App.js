@@ -99,7 +99,7 @@ function App() {
                   <Route path="/send">
                     <SendMoney />
                   </Route>
-                  <Route path="/history">
+                  <Route path="/history" exact>
                     <History />
                   </Route>
                   <Route path="/history/:id">
