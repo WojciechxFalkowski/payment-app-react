@@ -8,11 +8,13 @@ import { formatCurrency } from "utils";
 
 import { SearchInput } from "components";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const TransactionTable = ({
   transactions,
   transactionNumber = transactions.length,
   activateInput,
 }) => {
+  const { t } = useTranslation();
   const tableNames = ["Transaction", "Amount", "Status", "Date"];
   const handleTitleClick = (nameTransaction) => {
     let states;
@@ -85,7 +87,7 @@ const TransactionTable = ({
           <Tr>
             {tableNames.map((th, index) => (
               <Th key={th} onClick={() => handleTitleClick(th)}>
-                {th.toUpperCase()}
+                {t(th.toUpperCase())}
                 <Span state={state[tableNames[index].toLocaleLowerCase()]}>
                   <IoIosArrowDown />
                 </Span>

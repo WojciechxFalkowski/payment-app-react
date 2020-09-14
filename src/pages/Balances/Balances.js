@@ -8,7 +8,10 @@ import {
 } from "utils/transactionFunctions";
 import { Wrapper } from "./Balances.css";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
+
 const Balances = ({ transactions }) => {
+  const { t } = useTranslation();
   const specyfication = [
     {
       type: "line",
@@ -16,7 +19,7 @@ const Balances = ({ transactions }) => {
         labels: getLastDayHours(),
         datasets: [
           {
-            label: "Money",
+            label: t("Money"),
             data: getLastDayTransactionMoney(transactions),
             backgroundColor: "rgba(255, 99, 132, 0.4)",
             borderColor: "rgba(255, 99, 132, 1)",
@@ -28,7 +31,7 @@ const Balances = ({ transactions }) => {
       options: {
         title: {
           display: true,
-          text: "Last 24 hours",
+          text: t("Last 24 hours"),
           fontSize: 14,
         },
         legend: {
@@ -59,7 +62,7 @@ const Balances = ({ transactions }) => {
         labels: getLastWeekDays(),
         datasets: [
           {
-            label: "Money",
+            label: t("Money"),
             data: getLastWeekTransactionMoney(transactions),
             backgroundColor: "rgba(255, 99, 132, 0.4)",
             borderColor: "rgba(255, 99, 132, 1)",
@@ -71,7 +74,7 @@ const Balances = ({ transactions }) => {
       options: {
         title: {
           display: true,
-          text: "Week",
+          text: t("Current week"),
           fontSize: 14,
         },
         legend: {

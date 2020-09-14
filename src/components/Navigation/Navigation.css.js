@@ -48,12 +48,12 @@ export const Li = styled.li`
   }
 `;
 export const I = styled.i`
-  transform: translateY(-10%);
   font-size: 1.3rem;
   padding-right: 5px;
 `;
 export const P = styled.p`
   display: flex;
+  align-items: center;
   color: white;
   text-decoration: none;
   margin-block-start: 0em;

@@ -4,7 +4,10 @@ import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { formatCurrency } from "utils";
 import { IoIosArrowBack } from "react-icons/io";
+import { useTranslation } from "react-i18next";
+
 const Id = ({ transactions }) => {
+  const { t } = useTranslation();
   let { id } = useParams();
   const history = useHistory();
   const index = transactions.findIndex(
@@ -30,31 +33,39 @@ const Id = ({ transactions }) => {
         <IoIosArrowBack />
       </Arrow>
       <P>
-        Transaction ID<Span>{account_id}</Span>
+        {t("Transaction ID")}
+        <Span>{account_id}</Span>
       </P>
       <P>
-        Transaction name<Span>{transaction}</Span>
+        {t("Transaction name")}
+        <Span>{transaction}</Span>
       </P>
       <P>
-        Amount<Span>{formatCurrency(amount)}</Span>
+        {t("Amount")}
+        <Span>{formatCurrency(amount)}</Span>
       </P>
       <P>
-        Currency<Span>{iso_currency_code}</Span>
+        {t("Currency")}
+        <Span>{iso_currency_code}</Span>
       </P>
       <P>
         Status<Span>{status}</Span>
       </P>
       <P>
-        Type transaction<Span>{type_transaction}</Span>
+        {t("Type transaction")}
+        <Span>{type_transaction}</Span>
       </P>
       <P>
-        From<Span>{country}</Span>
+        {t("From")}
+        <Span>{country}</Span>
       </P>
       <P>
-        Date<Span>{date.toDateString()}</Span>
+        {t("Date")}
+        <Span>{date.toDateString()}</Span>
       </P>
       <P>
-        Authorization date<Span>{authorized_date.toDateString()}</Span>
+        {t("Authorization date")}
+        <Span>{authorized_date.toDateString()}</Span>
       </P>
     </Wrapper>
   );

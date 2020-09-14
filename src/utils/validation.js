@@ -1,5 +1,4 @@
-export const required = (value) =>
-  value ? undefined : "This field is Required!";
+export const required = (text) => (value) => (value ? undefined : text);
 
 export const checkAtSign = (text) => (value) =>
   value.includes("@") ? undefined : text;

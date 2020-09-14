@@ -12,61 +12,65 @@ import {
 } from "utils/validation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { StyledContainer } from "./Settings.css";
+import { StyledContainer, Box } from "./Settings.css";
+import { Button } from "components";
+import { useTranslation } from "react-i18next";
 const Settings = ({ profile, addRecipient }) => {
+  const { t, i18n } = useTranslation();
+
   const formFields = {
     fields: [
       {
         name: "name",
         validate: composeValidators(
-          required,
-          minValue(3, `Your name must be between 3 and 12 characters`),
-          maxValue(12, `Your name must be between 3 and 12 characters`)
+          required(t("This field is Required!")),
+          minValue(3, t(`Your name must be between 3 and 12 characters`)),
+          maxValue(12, t(`Your name must be between 3 and 12 characters`))
         ),
         initialValue: profile.name,
-        text: "First Name:",
+        text: t("First Name:"),
         placeholder: profile.name,
       },
       {
         name: "surname",
         validate: composeValidators(
-          required,
-          minValue(3, `Your surname must be between 3 and 12 characters`),
-          maxValue(12, `Your surname must be between 3 and 12 characters`)
+          required(t("This field is Required!")),
+          minValue(3, t(`Your surname must be between 3 and 12 characters`)),
+          maxValue(12, t(`Your surname must be between 3 and 12 characters`))
         ),
         initialValue: profile.surname,
-        text: "Last Name:",
+        text: t("Last Name:"),
         placeholder: profile.surname,
       },
       {
         name: "email",
         validate: composeValidators(
-          required,
-          checkAtSign("Incorrect address - @")
+          required(t("This field is Required!")),
+          checkAtSign(t("Incorrect address - @"))
         ),
         initialValue: profile.email,
-        text: "Email:",
+        text: t("Email:"),
         placeholder: profile.email,
       },
       {
         name: "phoneNumber",
         validate: composeValidators(
-          required,
-          mustBeNumber(`Your phone number must be a 9 digits`),
-          minValue(9, `Your phone number must be a 9 digits`),
-          maxValue(9, `Your phone number must be a 9 digits`)
+          required(t("This field is Required!")),
+          mustBeNumber(t(`Your phone number must be a 9 digits`)),
+          minValue(9, t(`Your phone number must be a 9 digits`)),
+          maxValue(9, t(`Your phone number must be a 9 digits`))
         ),
         initialValue: profile.phoneNumber,
-        text: "Phone number:",
+        text: t("Phone number:"),
         placeholder: profile.phoneNumber,
       },
     ],
     button: {
       type: "submit",
-      text: "Update Profile",
+      text: t("Update Profile"),
     },
   };
-  const notify = () => toast("Updated!");
+  const notify = () => toast(t("Updated!"));
   const handleSubmit = (values) => {
     const profile = {
       name: values.name,
@@ -80,8 +84,19 @@ const Settings = ({ profile, addRecipient }) => {
 
   return (
     <>
-      <FormTemplate formFields={formFields} handleSubmit={handleSubmit} />
-      <StyledContainer />
+      <Box>
+        <FormTemplate formFields={formFields} handleSubmit={handleSubmit} />
+        <StyledContainer />
+      </Box>
+      <Box>
+        <h1>{t("Languages")}</h1>
+        <Button variant="regular" onClick={() => i18n.changeLanguage("pl")}>
+          pl
+        </Button>
+        <Button onClick={() => i18n.changeLanguage("en")} variant="regular">
+          en
+        </Button>
+      </Box>
     </>
   );
 };

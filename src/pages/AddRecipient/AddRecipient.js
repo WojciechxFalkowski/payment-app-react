@@ -13,91 +13,92 @@ import {
   maxValue,
   composeValidators,
 } from "utils/validation";
-
+import { useTranslation } from "react-i18next";
 const AddRecipient = ({ addRecipient }) => {
+  const { t } = useTranslation();
   const formFields = {
     fields: [
       {
         name: "name",
         validate: composeValidators(
-          required,
-          minValue(3, `Your name must be between 3 and 12 characters`),
-          maxValue(12, `Your name must be between 3 and 12 characters`)
+          required(t("This field is Required!")),
+          minValue(3, t(`Your name must be between 3 and 12 characters`)),
+          maxValue(12, t(`Your name must be between 3 and 12 characters`))
         ),
         initialValue: undefined,
-        text: "First Name:",
-        placeholder: "First Name",
+        text: t("First Name") + ":",
+        placeholder: t("First Name"),
       },
       {
         name: "surname",
         validate: composeValidators(
-          required,
-          minValue(3, `Your name must be between 3 and 12 characters`),
-          maxValue(12, `Your name must be between 3 and 12 characters`)
+          required(t("This field is Required!")),
+          minValue(3, t(`Your surname must be between 3 and 12 characters`)),
+          maxValue(12, t(`Your surname must be between 3 and 12 characters`))
         ),
         initialValue: undefined,
-        text: "Last Name:",
-        placeholder: "Last Name",
+        text: t("Last Name") + ":",
+        placeholder: t("Last Name"),
       },
       {
         name: "accountNumber",
         validate: composeValidators(
-          required,
-          mustBeNumber(`Your account number must be a 12 digits`),
-          minValue(12, `Your account number must be a 12 digits`),
-          maxValue(12, `Your account number must be a 12 digits`)
+          required(t("This field is Required!")),
+          mustBeNumber(t(`Your account number must be a 12 digits`)),
+          minValue(12, t(`Your account number must be a 12 digits`)),
+          maxValue(12, t(`Your account number must be a 12 digits`))
         ),
         initialValue: undefined,
-        text: "Account Number:",
-        placeholder: "Account Number",
+        text: t("Account Number") + ":",
+        placeholder: t("Account Number"),
       },
       {
         name: "email",
         validate: composeValidators(
-          required,
-          checkAtSign("Incorrect address - @")
+          required(t("This field is Required!")),
+          checkAtSign(t("Incorrect address - @"))
         ),
         initialValue: undefined,
-        text: "Email:",
-        placeholder: "Email",
+        text: t("Email") + ":",
+        placeholder: t("Email"),
       },
       {
         name: "phoneNumber",
         validate: composeValidators(
-          required,
-          mustBeNumber(`Your phone number must be a 9 digits`),
-          minValue(9, `Your phone number must be a 9 digits`),
-          maxValue(9, `Your phone number must be a 9 digits`)
+          required(t("This field is Required!")),
+          mustBeNumber(t(`Your phone number must be a 9 digits`)),
+          minValue(9, t(`Your phone number must be a 9 digits`)),
+          maxValue(9, t(`Your phone number must be a 9 digits`))
         ),
         initialValue: undefined,
-        text: "Phone number:",
-        placeholder: "Phone number",
+        text: t("Phone number") + ":",
+        placeholder: t("Phone number"),
       },
       {
         name: "address",
-        validate: composeValidators(required),
+        validate: composeValidators(required(t("This field is Required!"))),
         initialValue: undefined,
-        text: "Address:",
-        placeholder: "Address",
+        text: t("Address") + ":",
+        placeholder: t("Address"),
       },
       {
         name: "city",
-        validate: composeValidators(required),
+        validate: composeValidators(required(t("This field is Required!"))),
         initialValue: undefined,
-        text: "City:",
-        placeholder: "City",
+        text: t("City") + ":",
+        placeholder: t("City"),
       },
       {
         name: "country",
-        validate: composeValidators(required),
+        validate: composeValidators(required(t("This field is Required!"))),
         initialValue: undefined,
-        text: "Country:",
-        placeholder: "Country",
+        text: t("Country") + ":",
+        placeholder: t("Country"),
       },
     ],
     button: {
       type: "submit",
-      text: "Add contact",
+      text: t("Add contact"),
     },
   };
   const history = useHistory();

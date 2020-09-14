@@ -7,6 +7,7 @@ export const AppPerson = styled.div`
     justify-content: space-around;
   }
 `;
+
 export const AppPersonality = styled.div`
   display: flex;
   padding-top: 5vh;
@@ -27,6 +28,9 @@ export const Pname = styled.p`
 `;
 export const Istyled = styled.i`
   font-size: 1.1rem;
+  svg {
+    transform: translateY(3px);
+  }
 `;
 export const MainButtons = styled.div`
   text-align: right;

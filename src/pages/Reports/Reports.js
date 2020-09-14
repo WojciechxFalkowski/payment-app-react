@@ -9,11 +9,19 @@ import {
   getYearsTransaction,
 } from "utils/transactionFunctions";
 import { Wrapper } from "./Reports.css";
+import { useTranslation } from "react-i18next";
 const Reports = ({ transactions }) => {
+  const { t } = useTranslation();
   const getDaysTrans = getDaysTransaction(transactions);
+
   const getMonth = getLastYearMonths();
 
   const lastYearMonthTransaction = getLastYearMonthTransaction(transactions);
+  let lastYearMonthTransactionNames = [];
+  lastYearMonthTransaction.name.forEach((month) => {
+    lastYearMonthTransactionNames.push(t(month));
+  });
+
   const yearsTransaction = getYearsTransaction(transactions);
   const lastYearQuarterTransactions = getLastYearQuarterTransactions(
     transactions
@@ -54,7 +62,7 @@ const Reports = ({ transactions }) => {
       options: {
         title: {
           display: true,
-          text: getMonth[new Date().getMonth()],
+          text: t(getMonth[new Date().getMonth()]),
         },
         legend: {
           display: false,
@@ -67,7 +75,7 @@ const Reports = ({ transactions }) => {
       type: "pie",
 
       data: {
-        labels: lastYearMonthTransaction.name,
+        labels: lastYearMonthTransactionNames,
         datasets: [
           {
             data: lastYearMonthTransaction.money,
@@ -136,7 +144,7 @@ const Reports = ({ transactions }) => {
       options: {
         title: {
           display: false,
-          text: "Monthly balance",
+          text: t("Monthly balance"),
         },
         legend: {
           position: "right",
@@ -194,7 +202,7 @@ const Reports = ({ transactions }) => {
       options: {
         title: {
           display: false,
-          text: "Quarterly balance",
+          text: t("Quarterly balance"),
         },
         legend: {
           position: "right",
@@ -289,15 +297,17 @@ const Reports = ({ transactions }) => {
 
   return (
     <Wrapper>
-      <Chart specification={specification[0]}>Balance of current month</Chart>
+      <Chart specification={specification[0]}>
+        {t("Balance of current month")}
+      </Chart>
       <Chart specification={specification[1]} maxHeight={300} maxWidth={500}>
-        Monthly balance
+        {t("Monthly balance")}
       </Chart>
       <Chart specification={specification[2]} maxHeight={300} maxWidth={500}>
-        Quarterly balance
+        {t("Quarterly balance")}
       </Chart>
       <Chart specification={specification[3]} maxHeight={300} maxWidth={500}>
-        Yearly balance
+        {t("Yearly balance")}
       </Chart>
     </Wrapper>
   );

@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+
 import GlobalStyles from "./index.css";
 import { Navigation, Hamburger, Profile } from "components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -9,6 +10,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { IoMdSettings } from "react-icons/io";
 import theme from "utils/theme";
 import { ThemeProvider } from "styled-components";
+
 import {
   Home,
   History,
@@ -21,8 +23,10 @@ import {
   Id,
   SendMoney,
 } from "pages";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t } = useTranslation();
   const [isActiveHamburger, setIsActiveHamburger] = useState(false);
   const handleHamburgerIsActive = (e) => {
     e.target.classList.toggle("is-active");
@@ -30,37 +34,37 @@ function App() {
   };
   const menu = [
     {
-      name: "Home",
+      name: t("Home"),
       url: "/",
       icon: <FaHome />,
     },
     {
-      name: "History",
+      name: t("History"),
       url: "/history",
       icon: <FaHistory />,
     },
     {
-      name: "Balances",
+      name: t("Balances"),
       url: "/balances",
       icon: <MdLinearScale />,
     },
     {
-      name: "Cards",
+      name: t("Cards"),
       url: "/cards",
       icon: <FaRegCreditCard />,
     },
     {
-      name: "Recipients",
+      name: t("Recipients"),
       url: "/recipients",
       icon: <BsFillPeopleFill />,
     },
     {
-      name: "Reports",
+      name: t("Reports"),
       url: "/reports",
       icon: <MdAssessment />,
     },
     {
-      name: "Settings",
+      name: t("Settings"),
       url: "/settings",
       icon: <IoMdSettings />,
     },
@@ -70,7 +74,7 @@ function App() {
     <Fragment>
       <GlobalStyles />
 
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Container>
           <MobileMenu>
             <Hamburger
@@ -92,13 +96,13 @@ function App() {
                   <Route path="/" exact>
                     <Home />
                   </Route>
-                  <Route path="/send" exact>
+                  <Route path="/send">
                     <SendMoney />
                   </Route>
-                  <Route path="/history" exact>
+                  <Route path="/history">
                     <History />
                   </Route>
-                  <Route path="/history/:id" exact>
+                  <Route path="/history/:id">
                     <Id />
                   </Route>
                   <Route path="/balances">
@@ -110,7 +114,7 @@ function App() {
                   <Route path="/recipients" exact>
                     <Recipients />
                   </Route>
-                  <Route path="/recipients/add" exact>
+                  <Route path="/recipients/add">
                     <AddRecipient />
                   </Route>
                   <Route path="/reports">
@@ -119,6 +123,7 @@ function App() {
                   <Route path="/settings">
                     <Settings />
                   </Route>
+                  <Route>ERROR</Route>
                 </Switch>
               </Box>
             </Wrapper>

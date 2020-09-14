@@ -14,8 +14,9 @@ import profilePicture from "./../../images/profile/joseph-gonzalez_50x50.jpg";
 import { Button } from "components";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 const Profile = ({ profile: { name, surname } }) => {
+  const { t } = useTranslation();
   const history = useHistory();
   const date = new Date().getHours();
 
@@ -28,12 +29,12 @@ const Profile = ({ profile: { name, surname } }) => {
         <Img src={profilePicture} alt="" />
         <Person>
           <Pname>
-            Good
+            {t("Good")}{" "}
             {date >= 6 && date < 12
-              ? " Moring"
+              ? t("Moring")
               : date >= 12 && date <= 18
-              ? " Afternoon"
-              : " Evening"}
+              ? t("Afternoon")
+              : t("Evening")}
             , {name} {surname}
           </Pname>
           <P>
@@ -46,7 +47,7 @@ const Profile = ({ profile: { name, surname } }) => {
       </AppPersonality>
       <MainButtons>
         <Button variant="background" onClick={handleSendMoneyButton}>
-          Send Money
+          {t("Send Money")}
         </Button>
       </MainButtons>
     </AppPerson>

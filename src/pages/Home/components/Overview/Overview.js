@@ -7,7 +7,9 @@ import pending from "images/overview/pending.png";
 import processed from "images/overview/processed.png";
 import { connect } from "react-redux";
 import { overview } from "data/actions/overview.action";
+import { useTranslation } from "react-i18next";
 const Overview = ({ transactions, overviewIsActive, overview }) => {
+  const { t } = useTranslation();
   const account = {
     accountBalance: {
       transactions: transactions.filter(
@@ -56,7 +58,7 @@ const Overview = ({ transactions, overviewIsActive, overview }) => {
   return (
     <Fragment>
       <Title onClick={handleH4Click}>
-        Overview
+        {t("Overview")}
         <Img
           src={rectangle}
           isActiveOverview={overviewIsActive.isActive}

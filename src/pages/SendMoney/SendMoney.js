@@ -11,7 +11,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { StyledContainer } from "pages/Settings/Settings.css";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
+
 const SendMoney = ({ profile }) => {
+  const { t } = useTranslation();
   const formFields = {
     fields: [
       {
@@ -71,7 +74,7 @@ const SendMoney = ({ profile }) => {
       text: "Send",
     },
   };
-  const notify = (values) => toast(`Money sent correctly!`);
+  const notify = (values) => toast(t(`Money sent correctly!`));
   const handleSubmit = (values, form) => {
     notify(values);
     values.accountNumber = "";

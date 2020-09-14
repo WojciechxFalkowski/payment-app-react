@@ -8,7 +8,10 @@ import {
   Span,
   Button,
 } from "./FormTemplate.css";
+import { useTranslation } from "react-i18next";
+
 const FormTemplate = ({ formFields: { fields, button }, handleSubmit }) => {
+  const { t } = useTranslation();
   return (
     <Form onSubmit={handleSubmit}>
       {(props) => (
@@ -29,7 +32,7 @@ const FormTemplate = ({ formFields: { fields, button }, handleSubmit }) => {
                       <Textarea
                         {...input}
                         type="text"
-                        placeholder="Description"
+                        placeholder={t("Description")}
                       />
                     ) : (
                       <Input
