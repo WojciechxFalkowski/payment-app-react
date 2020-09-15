@@ -7,7 +7,7 @@ export const Menu = styled.ul`
   justify-content: space-between;
   overflow: hidden;
   :focus {
-    outline: 1px solid #05505c;
+    outline: 1px solid ${({ theme: { colors } }) => colors.blue.dark};
   }
   @media (min-width: 500px) {
     margin-block-start: unset;
@@ -28,11 +28,11 @@ export const Li = styled.li`
   margin: 5px auto;
   cursor: pointer;
   :hover {
-    background-color: #05505c;
+    background-color: ${({ theme: { colors } }) => colors.blue.dark};
   }
   :focus {
-    background-color: #05505c;
-    outline: 1px solid #05505c;
+    background-color: ${({ theme: { colors } }) => colors.blue.dark};
+    outline: 1px solid ${({ theme: { colors } }) => colors.blue.dark};
   }
   @media (orientation: landscape) and (max-height: 500px) {
     padding: 0.5vh 5vw;

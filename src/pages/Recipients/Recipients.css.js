@@ -22,7 +22,7 @@ export const P = styled.p`
     color: black;
     text-decoration: none;
     :hover {
-      color: #036672;
+      color: ${({ theme: { colors } }) => colors.blue.normal};
     }
   }
 `;

@@ -5,7 +5,7 @@ export const StyledContainer = styled(ToastContainer).attrs({})`
   .Toastify__toast-container {
   }
   .Toastify__toast {
-    color:#036672;
+    color:${({ theme: { colors } }) => colors.blue.normal};
   }
   .Toastify__progress-bar {
     background: none;

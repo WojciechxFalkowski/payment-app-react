@@ -22,7 +22,7 @@ export const AppMenu = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #036672;
+  background-color: ${({ theme: { colors } }) => colors.blue.normal};
   transform: ${(props) =>
     props.isActiveHamburger
       ? "transform: translateX(0%);"

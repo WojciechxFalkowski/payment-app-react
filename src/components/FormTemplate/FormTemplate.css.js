@@ -49,8 +49,8 @@ export const Button = styled.button`
   height: 29px;
   margin: 1vh 0;
   color: white;
-  background-color: #036672;
-  border: 2px solid #036672;
+  background-color: ${({ theme: { colors } }) => colors.blue.normal};
+  border: 2px solid ${({ theme: { colors } }) => colors.blue.normal};
   text-transform: uppercase;
   cursor: pointer;
 

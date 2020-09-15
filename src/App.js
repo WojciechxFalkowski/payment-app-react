@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 
 import GlobalStyles from "./index.css";
-import { Navigation, Hamburger, Profile } from "components";
+import { LoadingIndicator, Navigation, Hamburger, Profile } from "components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   Container,
@@ -165,7 +165,9 @@ function App() {
 function RootApp() {
   return (
     <ThemeProvider theme={theme}>
-      <App />
+      <React.Suspense fallback={<LoadingIndicator />}>
+        <App />
+      </React.Suspense>
     </ThemeProvider>
   );
 }

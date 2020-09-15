@@ -7,14 +7,12 @@ import * as serviceWorker from "./serviceWorker";
 import configureStore from "./data/store";
 import { Provider } from "react-redux";
 import "./i18n/i18n";
-import { LoadingIndicator } from "components";
+
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.Suspense fallback={<LoadingIndicator />}>
-      <App />
-    </React.Suspense>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
