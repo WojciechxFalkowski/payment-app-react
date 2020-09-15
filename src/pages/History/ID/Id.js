@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { formatCurrency } from "utils";
 import { IoIosArrowBack } from "react-icons/io";
 import { useTranslation } from "react-i18next";
-
+import { formatDate } from "utils/date";
 const Id = ({ transactions }) => {
   const { t } = useTranslation();
   let { id } = useParams();
@@ -49,11 +49,11 @@ const Id = ({ transactions }) => {
         <Span>{iso_currency_code}</Span>
       </P>
       <P>
-        Status<Span>{status}</Span>
+        Status<Span>{t(status)}</Span>
       </P>
       <P>
         {t("Type transaction")}
-        <Span>{type_transaction}</Span>
+        <Span>{t(type_transaction)}</Span>
       </P>
       <P>
         {t("From")}
@@ -61,11 +61,11 @@ const Id = ({ transactions }) => {
       </P>
       <P>
         {t("Date")}
-        <Span>{date.toDateString()}</Span>
+        <Span>{formatDate(date)}</Span>
       </P>
       <P>
         {t("Authorization date")}
-        <Span>{authorized_date.toDateString()}</Span>
+        <Span>{formatDate(authorized_date)}</Span>
       </P>
     </Wrapper>
   );

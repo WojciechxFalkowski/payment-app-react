@@ -9,6 +9,7 @@ import { formatCurrency } from "utils";
 import { SearchInput } from "components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { formatDate } from "utils/date";
 const TransactionTable = ({
   transactions,
   transactionNumber = transactions.length,
@@ -94,13 +95,6 @@ const TransactionTable = ({
             ))}
           </Tr>
           {newTransactions.map((transaction) => {
-            const day = new Date(transaction.authorized_date).getDate();
-            const month = new Date(transaction.authorized_date).getMonth() + 1;
-            const year = new Date(transaction.authorized_date).getFullYear();
-            const date = `${day > 9 ? day : `0${day}`}/${
-              month > 9 ? month : `0${month}`
-            }/${year}`;
-
             return (
               <Tr key={transaction.account_id}>
                 <Td>
@@ -112,7 +106,7 @@ const TransactionTable = ({
                 <Td>
                   <P status={transaction.status}>{t(transaction.status)}</P>
                 </Td>
-                <Td>{date}</Td>
+                <Td>{formatDate(transaction.authorized_date)}</Td>
               </Tr>
             );
           })}
