@@ -104,7 +104,7 @@ const TransactionTable = ({
                 </Td>
                 <Td>{formatCurrency(transaction.amount)}</Td>
                 <Td>
-                  <P status={transaction.status}>{transaction.status}</P>
+                  <P status={transaction.status}>{t(transaction.status)}</P>
                 </Td>
                 <Td>{transaction.authorized_date.toDateString()}</Td>
               </Tr>
