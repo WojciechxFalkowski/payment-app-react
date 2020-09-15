@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.js": "/payment-app-react/static/js/main.cbb11757.chunk.js",
-    "main.js.map": "/payment-app-react/static/js/main.cbb11757.chunk.js.map",
+    "main.js": "/payment-app-react/static/js/main.a3f6c91c.chunk.js",
+    "main.js.map": "/payment-app-react/static/js/main.a3f6c91c.chunk.js.map",
     "runtime-main.js": "/payment-app-react/static/js/runtime-main.9313ae33.js",
     "runtime-main.js.map": "/payment-app-react/static/js/runtime-main.9313ae33.js.map",
     "static/css/2.d34346ea.chunk.css": "/payment-app-react/static/css/2.d34346ea.chunk.css",
-    "static/js/2.b29889f6.chunk.js": "/payment-app-react/static/js/2.b29889f6.chunk.js",
-    "static/js/2.b29889f6.chunk.js.map": "/payment-app-react/static/js/2.b29889f6.chunk.js.map",
+    "static/js/2.58325685.chunk.js": "/payment-app-react/static/js/2.58325685.chunk.js",
+    "static/js/2.58325685.chunk.js.map": "/payment-app-react/static/js/2.58325685.chunk.js.map",
     "index.html": "/payment-app-react/index.html",
-    "precache-manifest.38304db24e4eacc35d869d1fe1383b81.js": "/payment-app-react/precache-manifest.38304db24e4eacc35d869d1fe1383b81.js",
+    "precache-manifest.e5f154d93e5b59e9b33c33bbdca19066.js": "/payment-app-react/precache-manifest.e5f154d93e5b59e9b33c33bbdca19066.js",
     "service-worker.js": "/payment-app-react/service-worker.js",
     "static/css/2.d34346ea.chunk.css.map": "/payment-app-react/static/css/2.d34346ea.chunk.css.map",
-    "static/js/2.b29889f6.chunk.js.LICENSE.txt": "/payment-app-react/static/js/2.b29889f6.chunk.js.LICENSE.txt",
+    "static/js/2.58325685.chunk.js.LICENSE.txt": "/payment-app-react/static/js/2.58325685.chunk.js.LICENSE.txt",
+    "static/media/en.svg": "/payment-app-react/static/media/en.e5564902.svg",
+    "static/media/pl.svg": "/payment-app-react/static/media/pl.6e10627c.svg",
     "static/media/plane-640×426.jpg": "/payment-app-react/static/media/plane-640×426.f7babdbe.jpg",
     "static/media/shelby-640×350.jpg": "/payment-app-react/static/media/shelby-640×350.7d792c29.jpg",
     "static/media/ship-640x438.jpg": "/payment-app-react/static/media/ship-640x438.2d180bd9.jpg"
@@ -19,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.9313ae33.js",
     "static/css/2.d34346ea.chunk.css",
-    "static/js/2.b29889f6.chunk.js",
-    "static/js/main.cbb11757.chunk.js"
+    "static/js/2.58325685.chunk.js",
+    "static/js/main.a3f6c91c.chunk.js"
   ]
 }
