@@ -56,6 +56,7 @@ export const Box = styled.div`
   margin: 2vh auto;
 `;
 export const Main = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,5 +69,16 @@ export const Main = styled.div`
   @media (min-width: 1024px) {
     width: 100%;
     max-width: 1700px;
+  }
+`;
+export const Languages = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 10px;
+  img {
+    width: 20px;
+    margin-left: 5px;
+    cursor: pointer;
   }
 `;

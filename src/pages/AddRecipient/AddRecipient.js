@@ -26,7 +26,7 @@ const AddRecipient = ({ addRecipient }) => {
           maxValue(12, t(`Your name must be between 3 and 12 characters`))
         ),
         initialValue: undefined,
-        text: t("First Name") + ":",
+        text: t("First Name"),
         placeholder: t("First Name"),
       },
       {
@@ -37,7 +37,7 @@ const AddRecipient = ({ addRecipient }) => {
           maxValue(12, t(`Your surname must be between 3 and 12 characters`))
         ),
         initialValue: undefined,
-        text: t("Last Name") + ":",
+        text: t("Last Name"),
         placeholder: t("Last Name"),
       },
       {
@@ -49,7 +49,7 @@ const AddRecipient = ({ addRecipient }) => {
           maxValue(12, t(`Your account number must be a 12 digits`))
         ),
         initialValue: undefined,
-        text: t("Account Number") + ":",
+        text: t("Account Number"),
         placeholder: t("Account Number"),
       },
       {
@@ -59,7 +59,7 @@ const AddRecipient = ({ addRecipient }) => {
           checkAtSign(t("Incorrect address - @"))
         ),
         initialValue: undefined,
-        text: t("Email") + ":",
+        text: t("Email"),
         placeholder: t("Email"),
       },
       {
@@ -71,28 +71,28 @@ const AddRecipient = ({ addRecipient }) => {
           maxValue(9, t(`Your phone number must be a 9 digits`))
         ),
         initialValue: undefined,
-        text: t("Phone number") + ":",
+        text: t("Phone number"),
         placeholder: t("Phone number"),
       },
       {
         name: "address",
         validate: composeValidators(required(t("This field is Required!"))),
         initialValue: undefined,
-        text: t("Address") + ":",
+        text: t("Address"),
         placeholder: t("Address"),
       },
       {
         name: "city",
         validate: composeValidators(required(t("This field is Required!"))),
         initialValue: undefined,
-        text: t("City") + ":",
+        text: t("City"),
         placeholder: t("City"),
       },
       {
         name: "country",
         validate: composeValidators(required(t("This field is Required!"))),
         initialValue: undefined,
-        text: t("Country") + ":",
+        text: t("Country"),
         placeholder: t("Country"),
       },
     ],

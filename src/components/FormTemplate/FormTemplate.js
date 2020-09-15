@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
+import { useTranslation } from "react-i18next";
 import {
   Wrapper,
   FormWrapper,
@@ -8,7 +9,6 @@ import {
   Span,
   Button,
 } from "./FormTemplate.css";
-import { useTranslation } from "react-i18next";
 
 const FormTemplate = ({ formFields: { fields, button }, handleSubmit }) => {
   const { t } = useTranslation();

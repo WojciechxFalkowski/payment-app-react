@@ -25,7 +25,7 @@ const SendMoney = ({ profile }) => {
           maxValue(12, t(`Your name must be between 3 and 12 characters`))
         ),
         initialValue: profile.name,
-        text: t("First Name") + ":",
+        text: t("First Name"),
         placeholder: profile.name,
       },
       {
@@ -36,7 +36,7 @@ const SendMoney = ({ profile }) => {
           maxValue(12, t(`Your surname must be between 3 and 12 characters`))
         ),
         initialValue: profile.surname,
-        text: t("Last Name") + ":",
+        text: t("Last Name"),
         placeholder: profile.surname,
       },
       {
@@ -48,7 +48,7 @@ const SendMoney = ({ profile }) => {
           maxValue(12, t(`Your account number must be a 12 digits`))
         ),
         initialValue: undefined,
-        text: t("To") + ":",
+        text: t("To"),
         placeholder: t("Account Number"),
       },
       {
@@ -56,7 +56,7 @@ const SendMoney = ({ profile }) => {
         validate: composeValidators(required(t("This field is Required!"))),
         parse: (value) => parseFloat(value, 10),
         initialValue: undefined,
-        text: t("Amount") + ":",
+        text: t("Amount"),
         type: "number",
         step: "1",
         placeholder: t("Amount"),
@@ -64,7 +64,7 @@ const SendMoney = ({ profile }) => {
       {
         name: "description",
         initialValue: undefined,
-        text: t("Description") + ":",
+        text: t("Description"),
         component: "textarea",
         placeholder: t("Description"),
       },

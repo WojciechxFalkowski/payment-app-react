@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { addRecipient } from "data/actions/profile.actions";
 import { FormTemplate } from "components";
 import {
@@ -12,11 +13,10 @@ import {
 } from "utils/validation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { StyledContainer, Box } from "./Settings.css";
-import { Button } from "components";
-import { useTranslation } from "react-i18next";
+import { StyledContainer } from "./Settings.css";
+
 const Settings = ({ profile, addRecipient }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const formFields = {
     fields: [
@@ -28,7 +28,7 @@ const Settings = ({ profile, addRecipient }) => {
           maxValue(12, t(`Your name must be between 3 and 12 characters`))
         ),
         initialValue: profile.name,
-        text: t("First Name:"),
+        text: t("First Name"),
         placeholder: profile.name,
       },
       {
@@ -39,7 +39,7 @@ const Settings = ({ profile, addRecipient }) => {
           maxValue(12, t(`Your surname must be between 3 and 12 characters`))
         ),
         initialValue: profile.surname,
-        text: t("Last Name:"),
+        text: t("Last Name"),
         placeholder: profile.surname,
       },
       {
@@ -49,7 +49,7 @@ const Settings = ({ profile, addRecipient }) => {
           checkAtSign(t("Incorrect address - @"))
         ),
         initialValue: profile.email,
-        text: t("Email:"),
+        text: t("Email"),
         placeholder: profile.email,
       },
       {
@@ -61,7 +61,7 @@ const Settings = ({ profile, addRecipient }) => {
           maxValue(9, t(`Your phone number must be a 9 digits`))
         ),
         initialValue: profile.phoneNumber,
-        text: t("Phone number:"),
+        text: t("Phone number"),
         placeholder: profile.phoneNumber,
       },
     ],
@@ -84,19 +84,8 @@ const Settings = ({ profile, addRecipient }) => {
 
   return (
     <>
-      <Box>
-        <FormTemplate formFields={formFields} handleSubmit={handleSubmit} />
-        <StyledContainer />
-      </Box>
-      <Box>
-        <h1>{t("Languages")}</h1>
-        <Button variant="regular" onClick={() => i18n.changeLanguage("pl")}>
-          pl
-        </Button>
-        <Button onClick={() => i18n.changeLanguage("en")} variant="regular">
-          en
-        </Button>
-      </Box>
+      <FormTemplate formFields={formFields} handleSubmit={handleSubmit} />
+      <StyledContainer />
     </>
   );
 };

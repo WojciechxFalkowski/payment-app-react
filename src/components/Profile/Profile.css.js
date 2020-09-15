@@ -33,7 +33,7 @@ export const Istyled = styled.i`
   }
 `;
 export const MainButtons = styled.div`
-  text-align: right;
+  text-align: center;
   @media (min-width: 1024px) {
     align-self: center;
   }

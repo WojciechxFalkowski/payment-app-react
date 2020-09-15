@@ -13,8 +13,3 @@ export const StyledContainer = styled(ToastContainer).attrs({})`
   }
   }
 `;
-export const Box = styled.div`
-  :nth-child(2) {
-    text-align: center;
-  }
-`;
