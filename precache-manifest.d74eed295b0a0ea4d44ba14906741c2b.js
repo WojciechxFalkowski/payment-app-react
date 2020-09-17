@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9f422550c362ae881ff50d6a18d0fd3f",
+    "revision": "d67b930ef240780f8833728480dbbdbf",
     "url": "/payment-app-react/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/payment-app-react/static/js/2.58325685.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dd35c8f50978cafb784e",
-    "url": "/payment-app-react/static/js/main.f1c4478e.chunk.js"
+    "revision": "454cd0bab0e44ea99e7b",
+    "url": "/payment-app-react/static/js/main.82227cc0.chunk.js"
   },
   {
     "revision": "18f75d0bd364a0043052",
