@@ -39,6 +39,7 @@ const FormTemplate = ({ formFields: { fields, button }, handleSubmit }) => {
                         {...input}
                         type={formField.type ? formField.type : "text"}
                         step={formField.step ? formField.step : undefined}
+                        min={formField.min ? formField.min : undefined}
                         placeholder={formField.placeholder}
                       />
                     )}

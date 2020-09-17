@@ -54,12 +54,12 @@ const SendMoney = ({ profile }) => {
       {
         name: "amount",
         validate: composeValidators(required(t("This field is Required!"))),
-        parse: (value) => parseFloat(value, 10),
         initialValue: undefined,
         text: t("Amount"),
         type: "number",
         step: "1",
         placeholder: t("Amount"),
+        min: "1",
       },
       {
         name: "description",
