@@ -4,10 +4,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Arrow = styled.span`
-  position: absolute;
+  position: relative;
   top: 10px;
   left: 10px;
   cursor: pointer;
   font-size: 1.3rem;
-  z-index: 1;
 `;
