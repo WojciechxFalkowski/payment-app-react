@@ -69,6 +69,18 @@ const Reports = ({ transactions }) => {
           labels: {},
           position: "right",
         },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                lineHeight: 1.6,
+                callback: function (value, index, values) {
+                  return value + " $";
+                },
+              },
+            },
+          ],
+        },
       },
     },
     {

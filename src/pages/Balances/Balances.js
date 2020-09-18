@@ -49,7 +49,10 @@ const Balances = ({ transactions }) => {
           yAxes: [
             {
               ticks: {
-                beginAtZero: false,
+                lineHeight: 1.6,
+                callback: function (value, index, values) {
+                  return value + " $";
+                },
               },
             },
           ],
@@ -93,6 +96,10 @@ const Balances = ({ transactions }) => {
             {
               ticks: {
                 beginAtZero: false,
+                lineHeight: 1.6,
+                callback: function (value, index, values) {
+                  return value + " $";
+                },
               },
             },
           ],
