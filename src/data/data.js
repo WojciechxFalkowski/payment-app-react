@@ -1072,4 +1072,5 @@ export const initialProfileState = {
 };
 export const isActiveOverview = {
   isActive: true,
+  accountBalance: 0,
 };

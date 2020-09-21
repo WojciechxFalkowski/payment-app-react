@@ -16,7 +16,11 @@ export const ListItem = styled.li`
   margin: 2vh 1vw;
   padding: 2vh 0;
   overflow: hidden;
-
+  :hover {
+    cursor: ${(props) => (props.onClick ? "pointer" : "default")};
+    background-color: ${({ theme, onClick }) =>
+      `${onClick ? theme.colors.blue.normal : "default"}`};
+  }
   @media (min-width: 640px) {
     flex-basis: 46%;
   }

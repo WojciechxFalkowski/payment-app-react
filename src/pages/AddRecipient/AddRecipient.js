@@ -44,9 +44,9 @@ const AddRecipient = ({ addRecipient }) => {
         name: "accountNumber",
         validate: composeValidators(
           required(t("This field is Required!")),
-          mustBeNumber(t(`Your account number must be a 12 digits`)),
-          minValue(12, t(`Your account number must be a 12 digits`)),
-          maxValue(12, t(`Your account number must be a 12 digits`))
+          mustBeNumber(t(`Your account number must be a 16 digits`)),
+          minValue(16, t(`Your account number must be a 16 digits`)),
+          maxValue(16, t(`Your account number must be a 16 digits`))
         ),
         initialValue: undefined,
         text: t("Account Number"),

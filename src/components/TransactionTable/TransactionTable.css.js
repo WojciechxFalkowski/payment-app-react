@@ -61,19 +61,12 @@ export const Td = styled.td`
   }
 `;
 export const P = styled.p`
-  background-color: ${(props) =>
+  color: ${(props) =>
     props.status === "Success"
-      ? "rgba(154, 248, 125, 0.753)"
+      ? "rgba(0, 128, 0, 1)"
       : props.status === "Failed"
-      ? "rgba(255, 107, 88, 0.753)"
-      : "rgba(234, 243, 106, 0.5)"};
-  box-shadow: ${(props) =>
-    props.status === "Success"
-      ? "0px 0px 10px 2px rgb(154, 248, 125)"
-      : props.status === "Failed"
-      ? "0px 0px 10px 2px rgb(255, 107, 88)"
-      : "0px 0px 10px 2px rgb(234, 243, 106)"};
-  color: ${({ theme: { colors } }) => colors.blue.dark};
+      ? "rgba(255, 0, 0, 1)"
+      : "rgba(153, 153, 0, 1)"};
 `;
 export const Span = styled.span`
   display: inline-block;

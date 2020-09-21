@@ -13,6 +13,9 @@ export const Menu = styled.ul`
     margin-block-start: unset;
     margin-block-end: unset;
   }
+  @media (min-width: 1024px) {
+    position: fixed;
+  }
   a:link,
   a:visited,
   a:hover,
@@ -45,6 +48,7 @@ export const Li = styled.li`
   }
   @media (min-width: 1024px) {
     padding: 1vh 0vw 1vh 40px;
+    width: 160px;
   }
 `;
 export const I = styled.i`

@@ -12,6 +12,7 @@ import {
 
 const FormTemplate = ({ formFields: { fields, button }, handleSubmit }) => {
   const { t } = useTranslation();
+
   return (
     <Form onSubmit={handleSubmit}>
       {(props) => (
@@ -22,7 +23,7 @@ const FormTemplate = ({ formFields: { fields, button }, handleSubmit }) => {
                 key={formField.name}
                 name={formField.name}
                 validate={formField.validate}
-                initialValue={formField.initialValue}
+                defaultValue={formField.initialValue}
                 parse={formField.parse}
               >
                 {({ input, meta }) => (

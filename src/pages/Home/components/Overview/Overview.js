@@ -10,6 +10,7 @@ import { overview } from "data/actions/overview.action";
 import { useTranslation } from "react-i18next";
 const Overview = ({ transactions, overviewIsActive, overview }) => {
   const { t } = useTranslation();
+
   const account = {
     accountBalance: {
       transactions: transactions.filter(
@@ -32,7 +33,11 @@ const Overview = ({ transactions, overviewIsActive, overview }) => {
   };
 
   account.accountBalance.transactions.forEach((transaction) => {
-    account.accountBalance.sum += transaction.amount;
+    if (transaction.type_transaction.toLowerCase() === "in") {
+      account.accountBalance.sum += transaction.amount;
+    } else {
+      account.accountBalance.sum -= transaction.amount;
+    }
   });
   account.pending.transactions.forEach((transaction) => {
     account.pending.sum += transaction.amount;

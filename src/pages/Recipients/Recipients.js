@@ -12,7 +12,7 @@ const Recipients = () => {
       <P>
         <Link to="/recipients/add">{t("add new contact")}</Link>
       </P>
-      <List />
+      <List location={"recipients"} />
     </Wrapper>
   );
 };
