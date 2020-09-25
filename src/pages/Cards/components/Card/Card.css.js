@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -24,6 +25,16 @@ export const Wrapper = styled.div`
         (((theme.cards.width * 5) / 4) * 2) / 3
       }px`};
   }
+  :after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: ${({ theme }) => `${theme.cards.width}px`};
+    height: ${({ theme }) => `${(theme.cards.width * 2) / 3}px`};
+    background-color: black;
+    opacity: 0.4;
+  }
 `;
 
 export const P = styled.p`
@@ -32,6 +43,7 @@ export const P = styled.p`
   margin-block-end: 0em;
   margin: 5px 20px;
   background-color: rgba(0, 0, 0, 0.01);
+  z-index: 1;
 `;
 export const Span = styled.span`
   align-self: flex-end;
@@ -39,6 +51,7 @@ export const Span = styled.span`
   margin-block-end: 0em;
   margin: 5px 20px;
   background-color: rgba(0, 0, 0, 0.01);
+  z-index: 1;
 `;
 
 export const Name = styled.p`
@@ -47,7 +60,7 @@ export const Name = styled.p`
   margin-block-start: 0em;
   margin-block-end: 0em;
   margin-top: 50px;
-  background-color: rgba(0, 0, 0, 0.01);
+  z-index: 1;
 `;
 
 export const ExpiryDate = styled.p`
@@ -58,11 +71,13 @@ export const ExpiryDate = styled.p`
     transform: translateY(-80%);
     content: "MONTH/YEAR";
     font-size: 0.5rem;
+    z-index: 1;
   }
   position: relative;
   align-self: center;
   margin-block-end: 0em;
-  background-color: rgba(0, 0, 0, 0.01);
+  z-index: 1;
+
   ::after {
     position: absolute;
     top: 0;
@@ -70,6 +85,7 @@ export const ExpiryDate = styled.p`
     transform: translateX(-60%);
     content: "VALID THRU";
     font-size: 0.5rem;
+    z-index: 1;
   }
 `;
 export const HolderDetails = styled.p`
@@ -77,5 +93,5 @@ export const HolderDetails = styled.p`
   margin-block-start: 0em;
   margin-block-end: 0em;
   margin: 5px 20px;
-  background-color: rgba(0, 0, 0, 0.01);
+  z-index: 1;
 `;

@@ -6,7 +6,7 @@ import * as ChartJS from "chart.js";
 const Chart = ({ specification, children, maxWidth }) => {
   const canvasRef = useRef(null);
   useEffect(() => {
-    let ctx = canvasRef.current.getContext("2d");
+    const ctx = canvasRef.current.getContext("2d");
 
     new ChartJS(ctx, specification);
   });

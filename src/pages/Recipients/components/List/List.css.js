@@ -20,6 +20,8 @@ export const ListItem = styled.li`
     cursor: ${(props) => (props.onClick ? "pointer" : "default")};
     background-color: ${({ theme, onClick }) =>
       `${onClick ? theme.colors.blue.normal : "default"}`};
+    color: ${({ theme, onClick }) =>
+      `${onClick ? theme.colors.white.normal : "default"}`};
   }
   @media (min-width: 640px) {
     flex-basis: 46%;
@@ -76,4 +78,5 @@ export const ListName = styled.p`
 export const P = styled.p`
   margin-block-start: 0;
   margin-block-end: 0;
+  margin: 0.5vh 0 0.5vh 0;
 `;

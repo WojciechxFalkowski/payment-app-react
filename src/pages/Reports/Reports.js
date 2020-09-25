@@ -17,7 +17,7 @@ const Reports = ({ transactions }) => {
   const getMonth = getLastYearMonths();
 
   const lastYearMonthTransaction = getLastYearMonthTransaction(transactions);
-  let lastYearMonthTransactionNames = [];
+  const lastYearMonthTransactionNames = [];
   lastYearMonthTransaction.name.forEach((month) => {
     lastYearMonthTransactionNames.push(t(month));
   });
@@ -36,8 +36,8 @@ const Reports = ({ transactions }) => {
           {
             data: getDaysTrans.daysMoney,
             backgroundColor: function (context) {
-              var index = context.dataIndex;
-              var value = context.dataset.data[index];
+              const index = context.dataIndex;
+              const value = context.dataset.data[index];
               return value < 0
                 ? "rgba(230, 25, 75, 0.5)"
                 : index % 2
@@ -46,8 +46,8 @@ const Reports = ({ transactions }) => {
             },
 
             borderColor: function (context) {
-              var index = context.dataIndex;
-              var value = context.dataset.data[index];
+              const index = context.dataIndex;
+              const value = context.dataset.data[index];
               return value < 0 ? "red" : index % 2 ? "blue" : "green";
             },
             borderWidth: 1,

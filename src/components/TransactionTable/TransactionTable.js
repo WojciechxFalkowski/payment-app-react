@@ -22,7 +22,7 @@ const TransactionTable = ({
     nameTransaction = nameTransaction.toLowerCase();
     setFlaga(nameTransaction);
     if (flaga === nameTransaction) {
-      let transactionCopy = newTransactions.reverse();
+      const transactionCopy = newTransactions.reverse();
       setTransactions(new Array(...transactionCopy));
 
       ++state[nameTransaction];
@@ -55,8 +55,8 @@ const TransactionTable = ({
     }
   };
   const handleChangeInput = (e) => {
-    let transactionsIncludeValue = [];
-    let value = e.target.value.toLocaleLowerCase();
+    const transactionsIncludeValue = [];
+    const value = e.target.value.toLocaleLowerCase();
     transactions.forEach((transaction) => {
       if (transaction.transaction.toLowerCase().includes(value)) {
         transactionsIncludeValue.push(transaction);

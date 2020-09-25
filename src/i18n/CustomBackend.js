@@ -6,7 +6,7 @@ class CustomBackend extends Backend {
   }
 
   read(language, namespace, callback) {
-    var loadPath = this.options.loadPath;
+    let loadPath = this.options.loadPath;
     const payload = this.options.parseLoadPayload({
       lng: language,
       ns: namespace,

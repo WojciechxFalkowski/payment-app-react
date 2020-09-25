@@ -13,7 +13,7 @@ export const Menu = styled.ul`
     margin-block-start: unset;
     margin-block-end: unset;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     position: fixed;
   }
   a:link,
@@ -44,7 +44,7 @@ export const Li = styled.li`
   @media (min-width: 768px) {
     padding: 1vh 0vw 1vh 30px;
     margin: 5px 0;
-    width: auto;
+    width: 150px;
   }
   @media (min-width: 1024px) {
     padding: 1vh 0vw 1vh 40px;

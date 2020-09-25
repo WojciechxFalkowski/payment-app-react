@@ -29,12 +29,11 @@ const Profile = ({ profile: { name, surname } }) => {
         <Img src={profilePicture} alt="" />
         <Person>
           <Pname>
-            {t("Good") + " "}
             {date >= 6 && date < 12
-              ? t("Moring")
+              ? t("Good Moring")
               : date >= 12 && date <= 18
-              ? t("Afternoon")
-              : t("Evening")}
+              ? t("Good Afternoon")
+              : t("Good Evening")}
             , {name + " " + surname}
           </Pname>
           <P>

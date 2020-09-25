@@ -46,8 +46,8 @@ export const Span = styled.span`
 `;
 export const Button = styled.button`
   width: 193px;
-  height: 29px;
   margin: 1vh 0;
+  min-height: 29px;
   color: white;
   background-color: ${({ theme: { colors } }) => colors.blue.normal};
   border: 2px solid ${({ theme: { colors } }) => colors.blue.normal};

@@ -1,6 +1,6 @@
 export const todayDate = () => {
-  let date = new Date();
-  let todayDate = [
+  const date = new Date();
+  const todayDate = [
     date.getFullYear(),
     date.getMonth(),
     date.getDate(),
@@ -11,8 +11,8 @@ export const todayDate = () => {
   return todayDate;
 };
 export const getLastDayDates = () => {
-  let dates = [];
-  let date = todayDate();
+  const dates = [];
+  const date = todayDate();
   for (let i = 0; i <= 24 / 3; ++i) {
     dates.push(
       new Date(date[0], date[1], date[2] - 1, date[3] + i * 3, date[4], date[5])
@@ -39,9 +39,9 @@ export const getMoney = (allTransactions) => {
 };
 
 export const getLastWeekTransactionMoney = (allTransactions) => {
-  let transaction = getLastWeekTransaction(allTransactions);
-  let money = [0, 0, 0, 0, 0, 0];
-  let date = todayDate();
+  const transaction = getLastWeekTransaction(allTransactions);
+  const money = [0, 0, 0, 0, 0, 0];
+  const date = todayDate();
   for (let i = 0; i < transaction.length; ++i) {
     if (
       transaction[i].date >=
@@ -113,7 +113,7 @@ export const getLastWeekTransactionMoney = (allTransactions) => {
   return money;
 };
 export const getLastWeekDays = () => {
-  let weekdays = [
+  const weekdays = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -122,7 +122,7 @@ export const getLastWeekDays = () => {
     "Friday",
     "Saturday",
   ];
-  let labels = [];
+  const labels = [];
   for (let i = 1; i <= 7; ++i) {
     labels.push(
       weekdays[
@@ -134,10 +134,10 @@ export const getLastWeekDays = () => {
 };
 
 export const getLastDayTransactionMoney = (transactionsArray) => {
-  let transactions = getLastWeekTransaction(transactionsArray);
+  const transactions = getLastWeekTransaction(transactionsArray);
 
-  let dates = getLastDayDates();
-  let money = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const dates = getLastDayDates();
+  const money = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (let i = 0; i < transactions.length; ++i) {
     if (transactions[i].date >= dates[0] && transactions[i].date <= dates[1]) {
       if (transactions[i].type_transaction.toLowerCase() === "in") {
@@ -203,8 +203,8 @@ export const getLastDayTransactionMoney = (transactionsArray) => {
 };
 
 export const getLastDayHours = () => {
-  let dates = getLastDayDates();
-  let hoursDates = [];
+  const dates = getLastDayDates();
+  const hoursDates = [];
   for (let i = 0; i < dates.length; ++i) {
     hoursDates.push(
       `${dates[i].getHours()}:${
@@ -218,12 +218,12 @@ export const getLastDayHours = () => {
 };
 export const getDaysTransaction = (transactionsArray) => {
   const today = todayDate();
-  let dayOfMonth = new Date().getDate();
-  let daysData = {
+  const dayOfMonth = new Date().getDate();
+  const daysData = {
     daysMoney: [],
     daysName: [],
   };
-  let transactions = transactionsArray.filter(
+  const transactions = transactionsArray.filter(
     (transaction) =>
       transaction.status.toLowerCase() === "success" &&
       transaction.date >
@@ -256,7 +256,7 @@ export const getDaysTransaction = (transactionsArray) => {
 };
 
 export const getLastYearMonths = () => {
-  let months = [
+  const months = [
     "January",
     "February",
     "March",
@@ -275,8 +275,8 @@ export const getLastYearMonths = () => {
 
 export const getLastYearMonthFilter = (transactionsArray) => {
   const today = todayDate();
-  let date = new Date(today[0], 0, 1, 0, 0, 0);
-  let transaction = transactionsArray.filter(
+  const date = new Date(today[0], 0, 1, 0, 0, 0);
+  const transaction = transactionsArray.filter(
     (transaction) =>
       transaction.date >= date && transaction.status === "Success"
   );
@@ -284,13 +284,13 @@ export const getLastYearMonthFilter = (transactionsArray) => {
 };
 export const getLastYearMonthTransaction = (transactionsArray) => {
   let transactions = getLastYearMonthFilter(transactionsArray);
-  let monthly = {
+  const monthly = {
     money: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     name: [],
   };
-  let monthsName = getLastYearMonths();
+  const monthsName = getLastYearMonths();
   for (let i = 0; i < transactions.length; ++i) {
-    let transactionMonth = transactions[i].date.getMonth();
+    const transactionMonth = transactions[i].date.getMonth();
     if (transactions[i].type_transaction.toLowerCase() === "in")
       monthly.money[transactionMonth] =
         monthly.money[transactionMonth] + transactions[i].amount;
@@ -307,11 +307,11 @@ export const getLastYearMonthTransaction = (transactionsArray) => {
   return monthly;
 };
 export const getLastYearQuarterTransactions = (transactionsArray) => {
-  let monthly = getLastYearMonthTransaction(transactionsArray);
-  let quarterMoney = [0, 0, 0, 0];
-  let quarterName = ["I", "II", "III", "IV"];
-  let monthsName = getLastYearMonths();
-  let quarter = {
+  const monthly = getLastYearMonthTransaction(transactionsArray);
+  const quarterMoney = [0, 0, 0, 0];
+  const quarterName = ["I", "II", "III", "IV"];
+  const monthsName = getLastYearMonths();
+  const quarter = {
     quarterMoney: [],
     quarterName: [],
   };
@@ -348,15 +348,15 @@ export const getLastYearQuarterTransactions = (transactionsArray) => {
   return quarter;
 };
 export const getYearsTransaction = (transactionsArray) => {
-  let transactions = transactionsArray.filter(
+  const transactions = transactionsArray.filter(
     (transaction) => transaction.status.toLowerCase() === "success"
   );
-  let lastTransactionYear = transactions[
+  const lastTransactionYear = transactions[
     transactions.length - 1
   ].date.getFullYear();
-  let firstTransactionYear = transactions[0].date.getFullYear();
-  let years = Array(firstTransactionYear - lastTransactionYear + 1);
-  let yearsData = {
+  const firstTransactionYear = transactions[0].date.getFullYear();
+  const years = Array(firstTransactionYear - lastTransactionYear + 1);
+  const yearsData = {
     years: [],
     yearsName: [],
   };

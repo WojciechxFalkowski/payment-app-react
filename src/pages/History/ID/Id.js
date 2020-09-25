@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { formatDate } from "utils/date";
 const Id = ({ transactions }) => {
   const { t } = useTranslation();
-  let { id } = useParams();
+  const { id } = useParams();
   const history = useHistory();
   const index = transactions.findIndex(
     (transaction) => transaction.account_id === id
