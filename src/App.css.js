@@ -8,7 +8,7 @@ export const MobileMenu = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 101;
   transform: scale(0.7);
   @media (min-width: 768px) {
     display: none;
