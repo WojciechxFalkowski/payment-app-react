@@ -16,7 +16,6 @@ import {
 } from "utils/validation";
 import { useTranslation } from "react-i18next";
 const AddRecipient = ({ recipients, addRecipient }) => {
-  console.log("Lista:", recipients);
   const { t } = useTranslation();
   const formFields = {
     fields: [

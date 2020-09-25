@@ -1,8 +1,6 @@
 export const required = (text) => (value) => (value ? undefined : text);
-
 export const checkAtSign = (text) => (value) =>
   value.includes("@") ? undefined : text;
-
 export const mustBeNumber = (text) => (value) =>
   isNaN(value) ? text : undefined;
 export const minValue = (min, text) => (value) =>

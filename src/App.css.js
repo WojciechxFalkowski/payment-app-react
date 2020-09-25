@@ -28,7 +28,7 @@ export const AppMenu = styled.div`
       ? "transform: translateX(0%);"
       : "translateX(-100%)"};
   transition: 0.5s;
-  z-index: 1;
+  z-index: 100;
   @media (min-width: 500px) {
     width: 35vw;
   }
