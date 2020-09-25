@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addRecipient } from "data/actions/recipients.actions";
-import { Wrapper, Arrow } from "./AddRecipient.css";
-import { IoIosArrowBack } from "react-icons/io";
+import { Wrapper } from "./AddRecipient.css";
+import { Arrow } from "./components";
 import { useHistory } from "react-router-dom";
 import { FormTemplate } from "components";
 import {
@@ -12,9 +12,11 @@ import {
   minValue,
   maxValue,
   composeValidators,
+  uniqueString,
 } from "utils/validation";
 import { useTranslation } from "react-i18next";
-const AddRecipient = ({ addRecipient }) => {
+const AddRecipient = ({ recipients, addRecipient }) => {
+  console.log("Lista:", recipients);
   const { t } = useTranslation();
   const formFields = {
     fields: [
@@ -46,7 +48,8 @@ const AddRecipient = ({ addRecipient }) => {
           required(t("This field is Required!")),
           mustBeNumber(t(`Your account number must be a 16 digits`)),
           minValue(16, t(`Your account number must be a 16 digits`)),
-          maxValue(16, t(`Your account number must be a 16 digits`))
+          maxValue(16, t(`Your account number must be a 16 digits`)),
+          uniqueString(recipients, t("This account number is occupied"))
         ),
         initialValue: undefined,
         text: t("Account Number"),
@@ -117,17 +120,20 @@ const AddRecipient = ({ addRecipient }) => {
     addRecipient(recipientsList);
     history.goBack();
   };
-  const handleArrowClick = () => {
-    history.goBack();
-  };
+
   return (
     <Wrapper>
-      <Arrow onClick={handleArrowClick}>
-        <IoIosArrowBack />
-      </Arrow>
+      <Arrow />
       <FormTemplate formFields={formFields} handleSubmit={handleSubmit} />
     </Wrapper>
   );
 };
 
-export default connect(null, { addRecipient })(AddRecipient);
+export default connect(
+  (state) => {
+    return {
+      recipients: state.recipients.recipientsList,
+    };
+  },
+  { addRecipient }
+)(AddRecipient);

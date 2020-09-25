@@ -12,6 +12,12 @@ const List = ({
   const handleDeleteRecipient = (id) => {
     removeRecipient(id);
   };
+  const addSpaceToString = (value, number) => {
+    return [...value]
+      .map((d, i) => (i % number === 0 ? " " + d : d))
+      .join("")
+      .trim();
+  };
   return (
     <Wrapper>
       {recipientsList.map((recipient) => (
@@ -29,9 +35,9 @@ const List = ({
           <ListName>
             {recipient.name} {recipient.surname}
           </ListName>
-          <P>{recipient.accountNumber}</P>
+          <P>{addSpaceToString(recipient.accountNumber, 4)}</P>
           <P>{recipient.email}</P>
-          <P>{recipient.phoneNumber}</P>
+          <P>{addSpaceToString(recipient.phoneNumber, 3)}</P>
           <P>{recipient.address}</P>
           <P>{recipient.city}</P>
           <P>{recipient.country}</P>
