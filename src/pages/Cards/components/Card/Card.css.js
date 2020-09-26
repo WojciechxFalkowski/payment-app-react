@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
         (((theme.cards.width * 5) / 4) * 2) / 3
       }px`};
   }
-  :after {
+  ::after {
     position: absolute;
     content: "";
     top: 0;
@@ -34,6 +34,10 @@ export const Wrapper = styled.div`
     height: ${({ theme }) => `${(theme.cards.width * 2) / 3}px`};
     background-color: black;
     opacity: 0.4;
+    @media (min-width: 1024px) {
+      width: ${({ theme }) => `${(theme.cards.width * 5) / 4}px`};
+      height: ${({ theme }) => `${(((theme.cards.width * 5) / 4) * 2) / 3}px`};
+    }
   }
 `;
 

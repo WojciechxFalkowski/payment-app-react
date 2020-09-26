@@ -26,14 +26,21 @@ export const Menu = styled.ul`
 
 export const Li = styled.li`
   list-style-type: none;
-  padding: 1vh 5vw;
-  width: 100px;
-  margin: 5px auto;
-  cursor: pointer;
-  :hover {
+  a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding: 1vh 5vw;
+    width: 100px;
+    margin: 5px auto;
+    cursor: pointer;
+    :hover {
     background-color: ${({ theme: { colors } }) => colors.blue.dark};
   }
-  :focus {
+    :focus {
     background-color: ${({ theme: { colors } }) => colors.blue.dark};
     outline: 1px solid ${({ theme: { colors } }) => colors.blue.dark};
   }
@@ -54,12 +61,4 @@ export const Li = styled.li`
 export const I = styled.i`
   font-size: 1.3rem;
   padding-right: 5px;
-`;
-export const P = styled.p`
-  display: flex;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
 `;
