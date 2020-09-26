@@ -11,5 +11,7 @@ export const uniqueString = (contacts, text) => (value) =>
   contacts.find((contact) => contact.accountNumber === value) === undefined
     ? undefined
     : text;
+export const enoughMoney = (balance, text) => (value) =>
+  balance >= value ? undefined : text;
 export const composeValidators = (...validators) => (value) =>
   validators.reduce((error, validator) => error || validator(value), undefined);

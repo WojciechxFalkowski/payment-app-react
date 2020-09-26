@@ -969,7 +969,7 @@ export const initialRecipientsState = {
       email: "peterkowalski@gmail.com",
       accountNumber: "5552123196666577",
       phoneNumber: "767888676",
-      address: "Marszałkowska5 m.10",
+      address: "Marszałkowska 5 m.10",
       city: "Warsaw",
       country: "Poland",
       status: false,
@@ -1072,5 +1072,4 @@ export const initialProfileState = {
 };
 export const isActiveOverview = {
   isActive: true,
-  accountBalance: 0,
 };

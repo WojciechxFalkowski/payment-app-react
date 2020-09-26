@@ -7,8 +7,9 @@ import pending from "images/overview/pending.png";
 import processed from "images/overview/processed.png";
 import { connect } from "react-redux";
 import { overview } from "data/actions/overview.action";
+
 import { useTranslation } from "react-i18next";
-const Overview = ({ transactions, overviewIsActive, overview }) => {
+const Overview = ({ transactions, overviewIsActive, overview, balance }) => {
   const { t } = useTranslation();
 
   const account = {
@@ -39,6 +40,7 @@ const Overview = ({ transactions, overviewIsActive, overview }) => {
       account.accountBalance.sum -= transaction.amount;
     }
   });
+
   account.pending.transactions.forEach((transaction) => {
     account.pending.sum += transaction.amount;
   });

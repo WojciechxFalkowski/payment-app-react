@@ -6,6 +6,7 @@ import {
   minValue,
   maxValue,
   composeValidators,
+  enoughMoney,
 } from "utils/validation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,11 +15,24 @@ import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { List } from "pages/Recipients/components";
 import { addTransaction } from "data/actions/transactions.actions";
-const SendMoney = ({ addTransaction }) => {
+const SendMoney = ({ transactions, addTransaction }) => {
   const { t } = useTranslation();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
+
+  const successTransactions = transactions.filter(
+    (transaction) => transaction.status.toLowerCase() === "success"
+  );
+  const balance = successTransactions
+    .map((transaction) => {
+      if (transaction.type_transaction.toLowerCase() === "in") {
+        return transaction.amount;
+      } else {
+        return -transaction.amount;
+      }
+    })
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
   const formFields = {
     fields: [
@@ -58,7 +72,13 @@ const SendMoney = ({ addTransaction }) => {
       },
       {
         name: "amount",
-        validate: composeValidators(required(t("This field is Required!"))),
+        validate: composeValidators(
+          required(t("This field is Required!")),
+          enoughMoney(
+            balance,
+            t("Not enough money, your account balance") + ": " + balance + " $"
+          )
+        ),
         initialValue: undefined,
         text: t("Amount"),
         type: "number",
@@ -121,4 +141,11 @@ const SendMoney = ({ addTransaction }) => {
   );
 };
 
-export default connect(null, { addTransaction })(SendMoney);
+export default connect(
+  (state) => {
+    return {
+      transactions: state.transactions.transactions,
+    };
+  },
+  { addTransaction }
+)(SendMoney);
