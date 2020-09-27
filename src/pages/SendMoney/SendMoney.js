@@ -118,7 +118,7 @@ const SendMoney = ({ transactions, addTransaction }) => {
   const handleSubmit = (values, form) => {
     const random = Math.floor(Math.random() * 10);
     values.status = `${
-      random > 6 ? "Success" : random > 3 ? "Processing" : "Failed"
+      random > 4 ? "Success" : random > 2 ? "Processing" : "Failed"
     }`;
     values.account_id = ID();
     values.authorized_date = new Date();

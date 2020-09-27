@@ -6,7 +6,7 @@ import theme from "utils/theme";
 const Navigation = ({ onClick, items }) => {
   return (
     <Fragment>
-      <img src={logo} alt=""></img>
+      <img src={logo} alt="logo easywire"></img>
       <Menu>
         {items.map((item) => (
           <Li key={item.name}>
@@ -16,7 +16,7 @@ const Navigation = ({ onClick, items }) => {
               activeStyle={{
                 backgroundColor: theme.colors.blue.dark,
               }}
-              exact
+              exact={item.url === "/" ? true : false}
             >
               <I>{item.icon}</I>
               {item.name}

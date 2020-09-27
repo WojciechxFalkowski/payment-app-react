@@ -18,6 +18,7 @@ export const getLastDayDates = () => {
       new Date(date[0], date[1], date[2] - 1, date[3] + i * 3, date[4], date[5])
     );
   }
+
   return dates;
 };
 
@@ -31,10 +32,18 @@ export const getLastWeekTransaction = (transactions) => {
   );
 };
 export const getMoney = (allTransactions) => {
-  let accountMoney = 0;
-  allTransactions.forEach((transaction) => {
-    accountMoney += transaction.amount;
-  });
+  let accountMoney = allTransactions
+    .map((transaction) => {
+      if (transaction.status.toLowerCase() === "success") {
+        if (transaction.type_transaction.toLowerCase() === "in") {
+          return transaction.amount;
+        } else {
+          return -transaction.amount;
+        }
+      }
+      return 0;
+    })
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   return accountMoney;
 };
 
@@ -43,74 +52,37 @@ export const getLastWeekTransactionMoney = (allTransactions) => {
   const money = [0, 0, 0, 0, 0, 0];
   const date = todayDate();
   for (let i = 0; i < transaction.length; ++i) {
-    if (
-      transaction[i].date >=
-        new Date(date[0], date[1], date[2] - 6, date[3], date[4], date[5]) &&
-      transaction[i].date <
-        new Date(date[0], date[1], date[2] - 5, date[3], date[4], date[5])
-    ) {
-      if (transaction[i].type_transaction.toLowerCase() === "in") {
-        money[0] = money[0] + transaction[i].amount;
-      } else if (transaction[i].type_transaction.toLowerCase() === "out") {
-        money[0] = money[0] - transaction[i].amount;
-      }
-    } else if (
-      transaction[i].date >=
-        new Date(date[0], date[1], date[2] - 5, date[3], date[4], date[5]) &&
-      transaction[i].date <
-        new Date(date[0], date[1], date[2] - 4, date[3], date[4], date[5])
-    ) {
-      if (transaction[i].type_transaction.toLowerCase() === "in") {
-        money[1] = money[1] + transaction[i].amount;
-      } else if (transaction[i].type_transaction.toLowerCase() === "out") {
-        money[1] = money[1] - transaction[i].amount;
-      }
-    } else if (
-      transaction[i].date >=
-        new Date(date[0], date[1], date[2] - 4, date[3], date[4], date[5]) &&
-      transaction[i].date <
-        new Date(date[0], date[1], date[2] - 3, date[3], date[4], date[5])
-    ) {
-      if (transaction[i].type_transaction.toLowerCase() === "in") {
-        money[2] = money[2] + transaction[i].amount;
-      } else if (transaction[i].type_transaction.toLowerCase() === "out") {
-        money[2] = money[2] - transaction[i].amount;
-      }
-    } else if (
-      transaction[i].date >=
-        new Date(date[0], date[1], date[2] - 3, date[3], date[4], date[5]) &&
-      transaction[i].date <
-        new Date(date[0], date[1], date[2] - 2, date[3], date[4], date[5])
-    ) {
-      if (transaction[i].type_transaction.toLowerCase() === "in") {
-        money[3] = money[3] + transaction[i].amount;
-      } else if (transaction[i].type_transaction.toLowerCase() === "out") {
-        money[3] = money[3] - transaction[i].amount;
-      }
-    } else if (
-      transaction[i].date >=
-        new Date(date[0], date[1], date[2] - 2, date[3], date[4], date[5]) &&
-      transaction[i].date <
-        new Date(date[0], date[1], date[2] - 1, date[3], date[4], date[5])
-    ) {
-      if (transaction[i].type_transaction.toLowerCase() === "in") {
-        money[4] = money[4] + transaction[i].amount;
-      } else if (transaction[i].type_transaction.toLowerCase() === "out") {
-        money[4] = money[4] - transaction[i].amount;
-      }
-    } else {
-      if (transaction[i].type_transaction.toLowerCase() === "in") {
-        money[5] = money[5] + transaction[i].amount;
-      } else if (transaction[i].type_transaction.toLowerCase() === "out") {
-        money[5] = money[5] - transaction[i].amount;
+    for (let j = 0; j < money.length; ++j) {
+      if (
+        transaction[i].date >=
+          new Date(
+            date[0],
+            date[1],
+            date[2] - 6 + j,
+            date[3],
+            date[4],
+            date[5]
+          ) &&
+        transaction[i].date <
+          new Date(date[0], date[1], date[2] - 5 + j, date[3], date[4], date[5])
+      ) {
+        if (transaction[i].type_transaction.toLowerCase() === "in") {
+          money[j] = money[j] + transaction[i].amount;
+        } else if (transaction[i].type_transaction.toLowerCase() === "out") {
+          money[j] = money[j] - transaction[i].amount;
+        }
       }
     }
   }
-  for (let i = 0; i < 6; ++i) {
-    money[i] = getMoney(allTransactions) - money[i];
-  }
 
-  return money;
+  const balance = getMoney(allTransactions);
+  const dayMoney = [balance, balance, balance, balance, balance, balance];
+  for (let i = 0; i < money.length; ++i) {
+    for (let j = money.length - 1; j > i; --j) {
+      dayMoney[i] = dayMoney[i] - money[j];
+    }
+  }
+  return dayMoney;
 };
 export const getLastWeekDays = () => {
   const weekdays = [
@@ -135,71 +107,46 @@ export const getLastWeekDays = () => {
 
 export const getLastDayTransactionMoney = (transactionsArray) => {
   const transactions = getLastWeekTransaction(transactionsArray);
-
   const dates = getLastDayDates();
+  const date = todayDate();
+  dates.unshift(
+    new Date(date[0], date[1], date[2] - 1, date[3] + -3, date[4], date[5])
+  );
   const money = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
   for (let i = 0; i < transactions.length; ++i) {
-    if (transactions[i].date >= dates[0] && transactions[i].date <= dates[1]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[0] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[0] -= transactions[i].amount;
-      }
-    }
-    if (transactions[i].date >= dates[1] && transactions[i].date <= dates[2]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[1] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[1] -= transactions[i].amount;
-      }
-    }
-    if (transactions[i].date >= dates[2] && transactions[i].date <= dates[3]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[2] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[2] -= transactions[i].amount;
-      }
-    }
-    if (transactions[i].date >= dates[3] && transactions[i].date <= dates[4]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[3] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[3] -= transactions[i].amount;
-      }
-    }
-    if (transactions[i].date >= dates[4] && transactions[i].date <= dates[5]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[4] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[4] -= transactions[i].amount;
-      }
-    }
-    if (transactions[i].date >= dates[5] && transactions[i].date <= dates[6]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[5] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[5] -= transactions[i].amount;
-      }
-    }
-    if (transactions[i].date >= dates[6] && transactions[i].date <= dates[7]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[6] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[6] -= transactions[i].amount;
-      }
-    }
-    if (transactions[i].date >= dates[7]) {
-      if (transactions[i].type_transaction.toLowerCase() === "in") {
-        money[7] += transactions[i].amount;
-      } else if (transactions[i].type_transaction.toLowerCase() === "out") {
-        money[7] -= transactions[i].amount;
+    for (let j = 0; j < money.length; ++j) {
+      if (
+        transactions[i].date >= dates[j] &&
+        transactions[i].date <= dates[j + 1]
+      ) {
+        if (transactions[i].type_transaction.toLowerCase() === "in") {
+          money[j] += transactions[i].amount;
+        } else if (transactions[i].type_transaction.toLowerCase() === "out") {
+          money[j] -= transactions[i].amount;
+        }
       }
     }
   }
+  const balance = getMoney(transactionsArray);
+  const hoursMoney = [
+    balance,
+    balance,
+    balance,
+    balance,
+    balance,
+    balance,
+    balance,
+    balance,
+    balance,
+  ];
+
   for (let i = 0; i < money.length; ++i) {
-    money[i] = getMoney(transactionsArray) - money[i];
+    for (let j = money.length - 1; j > i; --j) {
+      hoursMoney[i] = hoursMoney[i] - money[j];
+    }
   }
-  return money;
+  return hoursMoney;
 };
 
 export const getLastDayHours = () => {

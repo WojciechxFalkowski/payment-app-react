@@ -107,13 +107,13 @@ function App() {
               <img
                 src={pl}
                 style={{ width: "20px" }}
-                alt=""
+                alt={t("change language to Polish")}
                 onClick={() => i18n.changeLanguage("pl")}
               />
               <img
                 src={en}
                 style={{ width: "20px" }}
-                alt=""
+                alt={t("change language to English")}
                 onClick={() => i18n.changeLanguage("en")}
               />
             </Languages>

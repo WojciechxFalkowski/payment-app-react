@@ -7,7 +7,7 @@ const Card = ({ item }) => {
   return (
     <Wrapper>
       <DivCard>
-        <Img src={item.image} alt="" />
+        <Img src={item.image} alt="card picture" />
         <DivInformation>
           <P>{t(item.name)}</P>
           <PMoney>{formatCurrency(item.account)}</PMoney>

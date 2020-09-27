@@ -69,7 +69,7 @@ const Overview = ({ transactions, overviewIsActive, overview, balance }) => {
         <Img
           src={rectangle}
           isActiveOverview={overviewIsActive.isActive}
-          alt=""
+          alt="rectangle"
         />
       </Title>
       <Wrapper isActiveOverview={overviewIsActive.isActive}>

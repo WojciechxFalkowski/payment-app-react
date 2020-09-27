@@ -16,7 +16,7 @@ const Personality = ({ profile: { name, surname } }) => {
   const nameAndSurname = name + " " + surname;
   return (
     <Wrapper>
-      <Img src={profilePicture} alt="" />
+      <Img src={profilePicture} alt="Your profile picture" />
       <Person>
         <Pname>
           {greeting}, {nameAndSurname}
