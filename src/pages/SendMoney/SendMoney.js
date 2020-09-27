@@ -40,6 +40,7 @@ const SendMoney = ({ transactions, addTransaction }) => {
         name: "name",
         validate: composeValidators(
           required(t("This field is Required!")),
+
           minValue(3, t(`Your name must be between 3 and 12 characters`)),
           maxValue(12, t(`Your name must be between 3 and 12 characters`))
         ),

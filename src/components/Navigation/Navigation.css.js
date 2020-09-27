@@ -1,4 +1,9 @@
 import styled from "styled-components";
+export const Wrapper = styled.div`
+  @media (min-width: 768px) {
+    position: fixed;
+  }
+`;
 export const Menu = styled.ul`
   display: flex;
   margin-block-start: unset;
@@ -13,9 +18,7 @@ export const Menu = styled.ul`
     margin-block-start: unset;
     margin-block-end: unset;
   }
-  @media (min-width: 768px) {
-    position: fixed;
-  }
+
   a:link,
   a:visited,
   a:hover,
